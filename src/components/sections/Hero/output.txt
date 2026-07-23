@@ -1,0 +1,392 @@
+// FloatingCard.tsx
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
+
+interface FloatingCardProps {
+    icon: ReactNode;
+    title: string;
+    subtitle: string;
+    className?: string;
+}
+
+const FloatingCard = ({
+    icon,
+    title,
+    subtitle,
+    className = "",
+}: FloatingCardProps) => {
+    return (
+        <motion.div
+            animate={{
+                y: [0, -12, 5],
+            }}
+            transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+            className={`
+                absolute
+                rounded-2xl
+                border
+                border-white/10
+                bg-slate-300/50
+                dark:bg-slate-900/90
+                backdrop-blur-xl
+                px-5
+                py-4
+                shadow-2xl
+                ${className}
+            `}
+        >
+            <div className="flex items-center gap-3 ">
+
+                <div className="text-3xl">
+                    {icon}
+                </div>
+
+                <div>
+
+                    <h4 className="font-bold text-slate-900 dark:text-white">
+                        {title}
+                    </h4>
+
+                    <p className="text-sm text-slate-900 dark:text-slate-400">
+                        {subtitle}
+                    </p>
+
+                </div>
+
+            </div>
+        </motion.div>
+    );
+};
+
+export default FloatingCard;
+// Hero.tsx
+import Container from "../../ui/Container";
+
+import HeroContent from "./HeroContent";
+import HeroImage from "./HeroImage";
+
+import { motion } from "framer-motion";
+
+const Hero = () => {
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen overflow-hidden flex items-center"
+    >
+      {/* Background Blur */}
+
+      <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[150px]" />
+
+      <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[150px]" />
+
+      <Container>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
+          className="grid items-center gap-20 lg:grid-cols-2"
+        >
+          <HeroContent />
+
+          <HeroImage />
+        </motion.div>
+      </Container>
+
+    </section>
+  );
+};
+
+export default Hero;
+
+// HeroContent.tsx
+import { Download, FolderOpen } from "lucide-react";
+
+import Button from "../../ui/Button";
+import Badge from "../../ui/Badge";
+
+import HeroStats from "./HeroStats";
+import HeroTech from "./HeroTech";
+import { heroData } from "../../../data/hero";
+
+import { TypeAnimation } from "react-type-animation";
+import HeroSocial from "./HeroSocial";
+
+const HeroContent = () => {
+  return (
+    <div>
+      <br />
+      <Badge>🟢 Available for Work</Badge>
+
+      <p className="mt-8 text-xl text-slate-700 dark:text-slate-300">Hello, I'm</p>
+
+      <h1>
+        {heroData.firstName}
+
+        <br />
+
+        <span>{heroData.lastName}</span>
+      </h1>
+
+      
+
+      <TypeAnimation
+        sequence={[
+          "Software Engineer",
+          2000,
+          "Full Stack Developer",
+          2000,
+          "AI Engineer",
+          2000,
+          "Java Developer",
+          2000,
+        ]}
+        wrapper="h2"
+        speed={80}
+        repeat={Infinity}
+        className="mt-6 text-3xl font-bold text-blue-400"
+      />
+
+
+      <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+        <span>{heroData.description}</span>
+      </p>
+
+      <div className="mt-10 flex flex-wrap gap-5">
+        <Button>
+          <FolderOpen size={18} />
+          View Projects
+        </Button>
+
+        <Button variant="outline">
+          <Download size={18} />
+          Download CV
+        </Button>
+      </div>
+
+      <HeroStats />
+
+      <HeroTech />
+
+      <HeroSocial />
+    </div>
+  );
+};
+
+export default HeroContent;
+
+// HeroImage.tsx
+import { motion } from "framer-motion";
+
+import {
+    FaJava,
+    FaReact,
+    FaPython,
+    FaHtml5
+} from "react-icons/fa";
+
+import photo from "../../../assets/images/photo.png";
+
+import FloatingCard from "./FloatingCard";
+
+const HeroImage = () => {
+
+    return (
+
+        <div className="relative flex justify-center">
+
+            <div className="absolute h-[450px] w-[450px] rounded-full bg-blue-600/20 blur-[140px]" />
+
+            <motion.img
+                src={photo}
+                alt="Zitouni Oussama"
+                initial={{
+                    opacity: 0,
+                    scale: .8
+                }}
+                animate={{
+                    opacity: 1,
+                    scale: 1
+                }}
+                transition={{
+                    duration: .8
+                }}
+                className="relative z-10 w-[380px] rounded-[40px] border border-white/10 shadow-2xl"
+            />
+
+            <FloatingCard
+                icon={<FaJava color="#F89820" />}
+                title="Java"
+                subtitle="Backend"
+                className="-left-5 top-20"
+            />
+
+            <FloatingCard
+                icon={<FaReact color="#61DAFB" />}
+                title="React"
+                subtitle="Frontend"
+                className="-right-5 top-40"
+            />
+
+            <FloatingCard
+                icon={<FaPython color="#3776AB" />}
+                title="Python"
+                subtitle="AI"
+                className="bottom-10 left-0"
+            />
+
+            <FloatingCard
+                icon={<FaHtml5 color="#3776AB" />}
+                title="HTML"
+                subtitle="Web"
+                className="right-5 bottom-10"
+            />
+
+        </div>
+
+    );
+
+};
+
+export default HeroImage;
+// HeroSocial.tsx
+import { socials } from "../../../data/social";
+
+const HeroSocial = () => {
+
+    return (
+
+        <div className="mt-10 flex gap-5">
+
+            {
+
+                socials.map((social) => {
+
+                    const Icon = social.icon;
+
+                    return (
+
+                        <a
+                            key={social.name}
+                            href={social.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-700 dark:bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-500/10"
+                        >
+
+                            <Icon size={25} />
+
+                        </a>
+
+                    );
+
+                })
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default HeroSocial;
+// HeroStats.tsx
+import Card from "../../ui/Card";
+import { heroStats } from "../../../data/stats";
+
+const HeroStats = () => {
+    return (
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+
+            {heroStats.map((stat) => {
+
+                const Icon = stat.icon;
+
+                return (
+                    <Card
+                        key={stat.title}
+                        className="text-center transition-all duration-300 hover:-translate-y-2"
+                    >
+                        <Icon
+                            size={32}
+                            className="mx-auto mb-4 text-blue-400"
+                        />
+
+                        <h3 className="text-3xl font-black  dark:text-white">
+                            {stat.number}
+                        </h3>
+
+                        <p className="mt-2 text-sm text-slate-400">
+                            {stat.title}
+                        </p>
+
+                    </Card>
+                );
+
+            })}
+
+        </div>
+    );
+};
+
+export default HeroStats;
+// HeroTech.tsx
+import { heroSkills } from "../../../data/skills";
+
+const HeroTech = () => {
+    return (
+        <div className="mt-12 flex flex-wrap gap-4">
+
+            {heroSkills.map((skill) => {
+
+                const Icon = skill.icon;
+
+                return (
+                    <div
+                        key={skill.name}
+                        className="
+                            flex items-center gap-3
+                            rounded-full
+                            border border-slate-700
+                            bg-slate-900/80
+                            px-5
+                            py-3
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:border-blue-500
+                        "
+                    >
+                        <Icon
+                            size={22}
+                            color={skill.color}
+                        />
+
+                        <span className="text-sm font-medium text-slate-300">
+                            {skill.name}
+                        </span>
+
+                    </div>
+                );
+
+            })}
+
+        </div>
+    );
+};
+
+export default HeroTech;
+// index.ts
+export { default } from "./Hero";

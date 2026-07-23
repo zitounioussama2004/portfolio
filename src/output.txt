@@ -1,0 +1,6082 @@
+// App.tsx
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home/Home";
+import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
+import NotFound from "./pages/NotFound/NotFound";
+
+const App = () => {
+
+    return (
+
+        <Routes>
+
+            {/* Home */}
+
+            <Route
+
+                path="/"
+
+                element={<Home />}
+
+            />
+
+            {/* Project Details */}
+
+            <Route
+
+                path="/projects/:slug"
+
+                element={<ProjectDetails />}
+
+            />
+
+            {/* 404 */}
+
+            <Route
+
+                path="*"
+
+                element={<NotFound />}
+
+            />
+
+        </Routes>
+
+    );
+
+};
+
+export default App;
+// components\layouts\MainLayout\index.ts
+export { default } from "./MainLayout";
+// components\layouts\MainLayout\MainLayout.tsx
+import type { ReactNode } from "react";
+
+import Navbar from "../Navbar";
+import Footer from "../../sections/Footer";
+
+interface MainLayoutProps {
+    children: ReactNode;
+}
+
+const MainLayout = ({ children }: MainLayoutProps) => {
+    return (
+        <>
+            <Navbar />
+
+            <main className="pt-20">
+                {children}
+            </main>
+
+            <Footer />
+        </>
+    );
+};
+
+export default MainLayout;
+// components\layouts\Navbar\index.ts
+export { default } from "./Navbar";
+// components\layouts\Navbar\Navbar.tsx
+import Container from "../../ui/Container";
+import Button from "../../ui/Button";
+
+const Navbar = () => {
+  return (
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-[#0B1120]/80 backdrop-blur-xl">
+      <Container>
+
+        <div className="flex h-20 items-center justify-between">
+
+          <h1 className="text-xl font-black text-white">
+            ZITOUNI
+            <span className="text-blue-500">.</span>
+          </h1>
+
+          <nav className="hidden md:flex items-center gap-8">
+
+            <a href="#about" className="text-slate-300 hover:text-white transition">
+              About
+            </a>
+
+            <a href="#skills" className="text-slate-300 hover:text-white transition">
+              Skills
+            </a>
+
+            <a href="#projects" className="text-slate-300 hover:text-white transition">
+              Projects
+            </a>
+
+            <a href="#education" className="text-slate-300 hover:text-white transition">
+              Education
+            </a>
+
+            <a href="#experience" className="text-slate-300 hover:text-white transition">
+              Experience
+            </a>
+
+            <a href="#contact" className="text-slate-300 hover:text-white transition">
+              Contact
+            </a>
+
+          </nav>
+
+          <Button size="sm">
+            Download CV
+          </Button>
+
+        </div>
+
+      </Container>
+    </header>
+  );
+};
+
+export default Navbar;
+// components\sections\About\About.tsx
+import Container from "../../ui/Container";
+
+import AboutContent from "./AboutContent";
+import AboutImage from "./AboutImage";
+
+const About = () => {
+
+    return (
+
+        <section
+            id="about"
+            className="py-32"
+        >
+
+            <Container>
+
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+                    <AboutImage />
+
+                    <AboutContent />
+
+                </div>
+
+            </Container>
+
+        </section>
+
+    );
+
+};
+
+export default About;
+// components\sections\About\AboutContent.tsx
+import Badge from "../../ui/Badge";
+
+import { aboutData } from "../../../data/about";
+
+const AboutContent = () => {
+
+    return (
+
+        <div>
+
+            <Badge>
+
+                About Me
+
+            </Badge>
+
+            <h2 className="mt-8 text-5xl font-black">
+
+                {aboutData.subtitle}
+
+            </h2>
+
+            <p className="mt-8 text-slate-400 leading-8">
+
+                {aboutData.description}
+
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+
+                {
+
+                    aboutData.highlights.map((item) => (
+
+                        <div
+                            key={item}
+                            className="
+                                rounded-full
+                                border
+                                border-slate-700
+                                bg-slate-900
+                                px-5
+                                py-3
+                            "
+                        >
+
+                            {item}
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        </div>
+
+    );
+
+};
+
+export default AboutContent;
+// components\sections\About\AboutImage.tsx
+import { aboutData } from "../../../data/about";
+
+const AboutImage = () => {
+
+    return (
+
+        <div className="relative flex justify-center">
+
+            <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]" />
+
+            <img
+                src={aboutData.image}
+                alt="About"
+                className="
+                    relative
+                    w-[420px]
+                    rounded-3xl
+                    border
+                    border-white/10
+                    shadow-2xl
+                "
+            />
+
+        </div>
+
+    );
+
+};
+
+export default AboutImage;
+// components\sections\About\AboutInfoCard.tsx
+
+// components\sections\About\index.ts
+export { default } from "./About";
+// components\sections\Contact\Contact.tsx
+import Container from "../../ui/Container";
+import SectionTitle from "../../ui/SectionTitle";
+
+import ContactForm from "./ContactForm";
+import ContactInfo from "./ContactInfo";
+
+const Contact = () => {
+
+    return (
+
+        <section
+            id="contact"
+            className="py-32"
+        >
+
+            <Container>
+
+                <SectionTitle
+                    title="Contact"
+                    subtitle="Let's Work Together"
+                />
+
+                <div
+                    className="
+                        mt-20
+                        grid
+                        gap-12
+                        lg:grid-cols-2
+                    "
+                >
+
+                    <ContactInfo/>
+
+                    <ContactForm/>
+
+                </div>
+
+            </Container>
+
+        </section>
+
+    );
+
+};
+
+export default Contact;
+// components\sections\Contact\ContactCard.tsx
+import { motion } from "framer-motion";
+
+interface Props {
+
+    children: React.ReactNode;
+
+}
+
+const ContactCard = ({ children }: Props) => {
+
+    return (
+
+        <motion.div
+
+            initial={{
+                opacity: 0,
+                x: -50
+            }}
+
+            whileInView={{
+                opacity: 1,
+                x: 0
+            }}
+
+            viewport={{
+                once: true
+            }}
+
+            transition={{
+                duration: .7
+            }}
+
+            className="
+                rounded-3xl
+
+                border
+
+                border-slate-800
+
+                bg-slate-900/60
+
+                p-10
+
+                backdrop-blur-xl
+            "
+
+        >
+
+            {children}
+
+        </motion.div>
+
+    );
+
+};
+
+export default ContactCard;
+// components\sections\Contact\ContactForm.tsx
+import { useRef, useState } from "react";
+
+import { motion } from "framer-motion";
+
+import emailjs from "@emailjs/browser";
+
+import { toast } from "react-toastify";
+
+import {
+
+    Send,
+
+    LoaderCircle
+
+} from "lucide-react";
+
+const ContactForm = () => {
+
+    const form = useRef<HTMLFormElement>(null);
+
+    const [loading,setLoading]=useState(false);
+
+    const sendEmail=async(
+
+        e:React.FormEvent<HTMLFormElement>
+
+    )=>{
+
+        e.preventDefault();
+
+        if(!form.current) return;
+
+        try{
+
+            setLoading(true);
+
+            await emailjs.sendForm(
+
+                "service_ds0sp3i",
+
+                "template_2iwfnea",
+
+                form.current,
+
+                {
+
+                    publicKey:"ScuoqhWx730gL9QRB"
+
+                }
+
+            );
+
+            toast.success("Message sent successfully!");
+
+            form.current.reset();
+
+        }
+
+        catch{
+
+            toast.error("Failed to send message.");
+
+        }
+
+        finally{
+
+            setLoading(false);
+
+        }
+
+    };
+
+    return(
+
+        <motion.form
+
+            ref={form}
+
+            onSubmit={sendEmail}
+
+            initial={{
+
+                opacity:0,
+
+                x:60
+
+            }}
+
+            whileInView={{
+
+                opacity:1,
+
+                x:0
+
+            }}
+
+            viewport={{
+
+                once:true
+
+            }}
+
+            transition={{
+
+                duration:.7
+
+            }}
+
+            className="
+
+                rounded-3xl
+
+                border
+
+                border-slate-800
+
+                bg-slate-900/60
+
+                p-10
+
+                backdrop-blur-xl
+
+                space-y-6
+
+            "
+
+        >
+
+            <input
+
+                required
+
+                name="user_name"
+
+                placeholder="Your Name"
+
+                className="
+
+                    w-full
+
+                    rounded-xl
+
+                    border
+
+                    border-slate-700
+
+                    bg-slate-950
+
+                    px-5
+
+                    py-4
+
+                    text-white
+
+                    outline-none
+
+                    transition
+
+                    focus:border-blue-500
+
+                "
+
+            />
+
+            <input
+
+                required
+
+                type="email"
+
+                name="user_email"
+
+                placeholder="Email"
+
+                className="
+
+                    w-full
+
+                    rounded-xl
+
+                    border
+
+                    border-slate-700
+
+                    bg-slate-950
+
+                    px-5
+
+                    py-4
+
+                    text-white
+
+                    outline-none
+
+                    transition
+
+                    focus:border-blue-500
+
+                "
+
+            />
+
+            <input
+
+                required
+
+                name="subject"
+
+                placeholder="Subject"
+
+                className="
+
+                    w-full
+
+                    rounded-xl
+
+                    border
+
+                    border-slate-700
+
+                    bg-slate-950
+
+                    px-5
+
+                    py-4
+
+                    text-white
+
+                    outline-none
+
+                    transition
+
+                    focus:border-blue-500
+
+                "
+
+            />
+
+            <textarea
+
+                required
+
+                rows={7}
+
+                name="message"
+
+                placeholder="Write your message..."
+
+                className="
+
+                    w-full
+
+                    resize-none
+
+                    rounded-xl
+
+                    border
+
+                    border-slate-700
+
+                    bg-slate-950
+
+                    px-5
+
+                    py-4
+
+                    text-white
+
+                    outline-none
+
+                    transition
+
+                    focus:border-blue-500
+
+                "
+
+            />
+
+            <button
+
+                disabled={loading}
+
+                className="
+
+                    flex
+
+                    w-full
+
+                    items-center
+
+                    justify-center
+
+                    gap-3
+
+                    rounded-xl
+
+                    bg-blue-600
+
+                    py-4
+
+                    font-semibold
+
+                    text-white
+
+                    transition
+
+                    hover:bg-blue-500
+
+                    disabled:cursor-not-allowed
+
+                    disabled:opacity-60
+
+                "
+
+            >
+
+                {
+
+                    loading
+
+                    ?
+
+                    <>
+
+                        <LoaderCircle
+
+                            className="animate-spin"
+
+                            size={20}
+
+                        />
+
+                        Sending...
+
+                    </>
+
+                    :
+
+                    <>
+
+                        <Send size={20}/>
+
+                        Send Message
+
+                    </>
+
+                }
+
+            </button>
+
+        </motion.form>
+
+    );
+
+};
+
+export default ContactForm;
+// components\sections\Contact\ContactInfo.tsx
+import ContactCard from "./ContactCard";
+import ContactItem from "./ContactItem";
+import ContactSocial from "./ContactSocial";
+import ContactMap from "./ContactMap";
+
+
+import {
+
+    Mail,
+
+    Phone,
+
+    MapPin
+
+} from "lucide-react";
+
+const ContactInfo = () => {
+
+    return (
+
+        <ContactCard>
+
+            <h2
+                className="
+                    text-4xl
+
+                    font-bold
+
+                    text-white
+                "
+            >
+
+                Get In Touch
+
+            </h2>
+
+            <p
+                className="
+                    mt-5
+
+                    leading-8
+
+                    text-slate-400
+                "
+            >
+
+                I'm always interested in discussing new opportunities,
+                freelance work, innovative ideas or collaboration on exciting projects.
+
+            </p>
+
+            <div className="mt-10 space-y-5">
+
+                <ContactItem
+
+                    icon={<Mail />}
+
+                    title="Email"
+
+                    value="zitounioussama2004@gmail.com"
+
+                />
+
+                <ContactItem
+
+                    icon={<Phone />}
+
+                    title="Phone"
+
+                    value="+213 556 60 27 28"
+
+                />
+
+                <ContactItem
+
+                    icon={<MapPin />}
+
+                    title="Location"
+
+                    value="Bordj Bou Arreridj, Algeria"
+
+                />
+
+            </div>
+
+            <ContactSocial />
+            <ContactMap />
+
+        </ContactCard>
+
+    );
+
+};
+
+export default ContactInfo;
+// components\sections\Contact\ContactItem.tsx
+import { motion } from "framer-motion";
+
+interface Props {
+
+    icon: React.ReactNode;
+
+    title: string;
+
+    value: string;
+
+}
+
+const ContactItem = ({ icon, title, value }: Props) => {
+
+    return (
+
+        <motion.div
+
+            whileHover={{
+                x: 8
+            }}
+
+            className="
+                flex
+                items-center
+                gap-5
+
+                rounded-2xl
+
+                border
+
+                border-slate-800
+
+                bg-slate-900/60
+
+                p-5
+
+                transition
+
+                hover:border-blue-500
+            "
+
+        >
+
+            <div
+                className="
+                    flex
+
+                    h-14
+
+                    w-14
+
+                    items-center
+
+                    justify-center
+
+                    rounded-xl
+
+                    bg-blue-500/10
+
+                    text-blue-400
+
+                    text-xl
+                "
+            >
+
+                {icon}
+
+            </div>
+
+            <div>
+
+                <p className="text-sm text-slate-500">
+
+                    {title}
+
+                </p>
+
+                <h4 className="font-semibold text-white">
+
+                    {value}
+
+                </h4>
+
+            </div>
+
+        </motion.div>
+
+    );
+
+};
+
+export default ContactItem;
+// components\sections\Contact\ContactMap.tsx
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import L from "leaflet";
+
+import "leaflet/dist/leaflet.css";
+
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+
+    iconRetinaUrl: markerIcon2x,
+
+    iconUrl: markerIcon,
+
+    shadowUrl: markerShadow,
+
+});
+
+const position: [number, number] = [
+
+    36.0735,
+
+    4.7635,
+
+];
+
+const ContactMap = () => {
+
+    return (
+
+        <div
+            className="
+                mt-10
+
+                overflow-hidden
+
+                rounded-3xl
+
+                border
+
+                border-slate-800
+            "
+        >
+
+            <MapContainer
+
+                center={position}
+
+                zoom={13}
+
+                scrollWheelZoom={false}
+
+                style={{
+
+                    height: "350px",
+
+                    width: "100%",
+
+                }}
+
+            >
+
+                <TileLayer
+
+                    attribution="&copy; OpenStreetMap contributors"
+
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+                />
+
+                <Marker position={position}>
+
+                    <Popup>
+
+                        Zitouni Oussama
+
+                        <br />
+
+                        Bordj Bou Arreridj
+
+                    </Popup>
+
+                </Marker>
+
+            </MapContainer>
+
+        </div>
+
+    );
+
+};
+
+export default ContactMap;
+// components\sections\Contact\ContactSocial.tsx
+import { socials } from "../../../data/social";
+
+const ContactSocial = () => {
+
+    return (
+
+        <div className="mt-10 flex gap-5">
+
+            {
+
+                socials.map((item) => {
+
+                    const Icon = item.icon;
+
+                    return (
+
+                        <a
+
+                            key={item.name}
+
+                            href={item.url}
+
+                            target="_blank"
+
+                            rel="noreferrer"
+
+                            style={{
+                                color: item.color,
+                                borderColor: item.color
+                            }}
+
+                            className="
+                                flex
+
+                                h-14
+
+                                w-14
+
+                                items-center
+
+                                justify-center
+
+                                rounded-full
+
+                                border-2
+
+                                text-2xl
+
+                                transition
+
+                                hover:scale-110
+
+                                hover:bg-white/10
+                            "
+
+                        >
+
+                            <Icon />
+
+                        </a>
+
+                    );
+
+                })
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default ContactSocial;
+// components\sections\Contact\index.ts
+export { default } from "./Contact";
+// components\sections\Education\Education.tsx
+import Container from "../../ui/Container";
+import SectionTitle from "../../ui/SectionTitle";
+
+import EducationTimeline from "./EducationTimeline";
+
+const Education = () => {
+
+    return (
+
+        <section
+            id="education"
+            className="py-32"
+        >
+
+            <Container>
+
+                <SectionTitle
+
+                    title="Education"
+
+                    subtitle="Academic Journey"
+
+                />
+
+                <EducationTimeline/>
+
+            </Container>
+
+        </section>
+
+    );
+
+};
+
+export default Education;
+// components\sections\Education\EducationCard.tsx
+import { motion } from "framer-motion";
+
+import EducationDot from "./EducationDot";
+
+import type { Education } from "../../../types/education";
+
+import {
+
+    Calendar,
+
+    MapPin,
+
+    Award,
+
+    Building2
+
+} from "lucide-react";
+
+interface Props{
+
+    education:Education;
+    
+
+}
+
+const EducationCard=({
+
+    education
+
+}:Props)=>{
+
+    return(
+
+        <motion.div
+
+            initial={{
+                opacity:0,
+                x:50
+            }}
+
+            whileInView={{
+                opacity:1,
+                x:0
+            }}
+
+            viewport={{
+                once:true
+            }}
+
+            transition={{
+                duration:.6
+            }}
+
+            className="relative pl-24"
+
+        >
+
+            <EducationDot/>
+
+            <div
+                className="
+                    rounded-3xl
+
+                    border
+
+                    border-slate-800
+
+                    bg-slate-900/60
+
+                    p-8
+
+                    backdrop-blur-md
+
+                    transition
+
+                    duration-300
+
+                    hover:border-blue-500
+
+                    hover:-translate-y-2
+                "
+            >
+
+                <div
+                    className="
+                        inline-flex
+                        rounded-full
+                        bg-blue-600/20
+                        px-4
+                        py-2
+                        text-sm
+                        font-semibold
+                        text-blue-400
+                    "
+                >
+
+                    {education.start} - {education.end}
+
+                </div>
+
+                <h3
+                    className="
+                        mt-5
+                        text-2xl
+                        font-bold
+                        text-white
+                    "
+                >
+
+                    {education.degree}
+
+                </h3>
+
+                <div
+                    className="
+                        mt-6
+                        flex
+                        flex-wrap
+                        gap-5
+                        text-slate-400
+                    "
+                >
+
+                    <div className="flex items-center gap-2">
+
+                        <Building2 size={18}/>
+
+                        {education.school}
+
+                    </div>
+
+                    <div className="flex items-center gap-2">
+
+                        <MapPin size={18}/>
+
+                        {education.location}
+
+                    </div>
+
+                    <div className="flex items-center gap-2">
+
+                        <Award size={18}/>
+
+                        {education.grade}
+
+                    </div>
+
+                </div>
+
+                <p
+                    className="
+                        mt-8
+                        leading-8
+                        text-slate-300
+                    "
+                >
+
+                    {education.description}
+
+                </p>
+
+            </div>
+
+        </motion.div>
+
+    );
+
+};
+
+export default EducationCard;
+// components\sections\Education\EducationDot.tsx
+import { GraduationCap } from "lucide-react";
+
+const EducationDot = () => {
+
+    return (
+
+        <div
+            className="
+                absolute
+                left-6
+                top-8
+                -translate-x-1/2
+
+                flex
+                h-14
+                w-14
+                items-center
+                justify-center
+
+                rounded-full
+
+                border-4
+
+                border-slate-950
+
+                bg-gradient-to-br
+
+                from-cyan-400
+
+                to-blue-600
+
+                shadow-xl
+            "
+        >
+
+            <GraduationCap
+
+                size={24}
+
+                className="text-white"
+
+            />
+
+        </div>
+
+    );
+
+};
+
+export default EducationDot;
+// components\sections\Education\EducationProgress.tsx
+
+// components\sections\Education\EducationTimeline.tsx
+import { education } from "../../../data/education";
+
+import EducationCard from "./EducationCard";
+
+const EducationTimeline = () => {
+
+    return (
+
+        <div className="relative mt-20">
+
+            <div
+                className="
+                    absolute
+                    left-6
+                    top-0
+                    h-full
+                    w-[3px]
+                    rounded-full
+                    bg-gradient-to-b
+                    from-cyan-500
+                    via-blue-500
+                    to-indigo-600
+                "
+            />
+
+            <div className="space-y-16">
+
+                {
+
+                    education.map(item=>(
+
+                        <EducationCard
+
+                            key={item.id}
+
+                            education={item}
+
+                        />
+
+                    ))
+
+                }
+
+            </div>
+
+        </div>
+
+    );
+
+};
+
+export default EducationTimeline;
+// components\sections\Education\index.ts
+export { default } from "./Education";
+// components\sections\Experience\Experience.tsx
+import Container from "../../ui/Container";
+import SectionTitle from "../../ui/SectionTitle";
+
+import ExperienceTimeline from "./ExperienceTimeline";
+
+const Experience = () => {
+
+    return (
+
+        <section
+            id="experience"
+            className="py-32"
+        >
+
+            <Container>
+
+                <SectionTitle
+                    title="Experience"
+                    subtitle="Professional Journey"
+                />
+
+                <ExperienceTimeline />
+
+            </Container>
+
+        </section>
+
+    );
+
+};
+
+export default Experience;
+// components\sections\Experience\ExperienceButton.tsx
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+interface Props{
+
+    slug?:string;
+
+}
+
+const ExperienceButton=({
+
+    slug
+
+}:Props)=>{
+
+    if(!slug) return null;
+
+    return(
+
+        <Link
+
+            to={`/projects/${slug}`}
+
+            className="
+                mt-8
+
+                inline-flex
+
+                items-center
+
+                gap-2
+
+                rounded-xl
+
+                bg-blue-600
+
+                px-6
+
+                py-3
+
+                font-semibold
+
+                text-white
+
+                transition
+
+                hover:bg-blue-500
+            "
+
+        >
+
+            View Project
+
+            <ArrowRight size={18}/>
+
+        </Link>
+
+    );
+
+};
+
+export default ExperienceButton;
+// components\sections\Experience\ExperienceCard.tsx
+import { motion } from "framer-motion";
+
+import {
+    Building2,
+    Calendar,
+    MapPin,
+    BriefcaseBusiness,
+} from "lucide-react";
+
+import type { Experience } from "../../../types/experience";
+
+import ExperienceDot from "./ExperienceDot";
+import ExperienceTags from "./ExperienceTags";
+import ExperienceButton from "./ExperienceButton";
+
+interface Props {
+    experience: Experience;
+    index: number;
+}
+
+const ExperienceCard = ({ experience, index }: Props) => {
+
+    const isLeft = index % 2 === 0;
+
+    return (
+
+        <div
+            className={`
+                relative
+                flex
+                w-full
+                ${
+                    isLeft
+                        ? "justify-start"
+                        : "justify-end"
+                }
+            `}
+        >
+
+            {/* CARD */}
+
+            <motion.div
+
+                initial={{
+                    opacity:0,
+                    x:isLeft ? -100 : 100,
+                    y:50
+                }}
+
+                whileInView={{
+                    opacity:1,
+                    x:0,
+                    y:0
+                }}
+
+                viewport={{
+                    once:true,
+                    amount:.3
+                }}
+
+                transition={{
+                    duration:.7
+                }}
+
+                whileHover={{
+                    y:-8
+                }}
+
+                className={`
+                    relative
+
+                    w-full
+
+                    md:w-[calc(50%-45px)]
+
+                    overflow-hidden
+
+                    rounded-3xl
+
+                    border
+
+                    border-slate-800
+
+                    bg-slate-900/70
+
+                    p-8
+
+                    backdrop-blur-xl
+
+                    transition
+
+                    hover:border-blue-500
+                `}
+            >
+
+                {/* Glow */}
+
+                <div
+                    className="
+                        absolute
+
+                        inset-0
+
+                        opacity-0
+
+                        transition
+
+                        duration-500
+
+                        group-hover:opacity-100
+
+                        bg-gradient-to-br
+
+                        from-cyan-500/10
+
+                        via-blue-500/10
+
+                        to-indigo-500/10
+                    "
+                />
+
+                {/* BIG YEAR */}
+
+                <span
+                    className="
+                        absolute
+
+                        right-6
+
+                        top-0
+
+                        text-[120px]
+
+                        font-black
+
+                        text-white/5
+
+                        select-none
+                    "
+                >
+                    {experience.end}
+                </span>
+
+                {/* DATE */}
+
+                <div
+                    className="
+                        inline-flex
+
+                        rounded-full
+
+                        bg-blue-500/10
+
+                        px-4
+
+                        py-2
+
+                        text-sm
+
+                        font-semibold
+
+                        text-blue-400
+                    "
+                >
+
+                    {experience.start} - {experience.end}
+
+                </div>
+
+                {/* ROLE */}
+
+                <h3
+                    className="
+                        mt-6
+
+                        text-3xl
+
+                        font-bold
+
+                        text-white
+                    "
+                >
+
+                    {experience.role}
+
+                </h3>
+
+                {/* COMPANY */}
+
+                <p className="mt-2 font-semibold text-cyan-400">
+
+                    {experience.company}
+
+                </p>
+
+                {/* INFO */}
+
+                <div className="mt-8 space-y-4 text-slate-300">
+
+                    <div className="flex items-center gap-3">
+
+                        <Building2 size={20}/>
+
+                        {experience.company}
+
+                    </div>
+
+                    <div className="flex items-center gap-3">
+
+                        <MapPin size={20}/>
+
+                        {experience.location}
+
+                    </div>
+
+                    <div className="flex items-center gap-3">
+
+                        <Calendar size={20}/>
+
+                        {experience.start} - {experience.end}
+
+                    </div>
+
+                    <div className="flex items-center gap-3">
+
+                        <BriefcaseBusiness size={20}/>
+
+                        {experience.role}
+
+                    </div>
+
+                </div>
+
+                {/* DESCRIPTION */}
+
+                <p
+                    className="
+                        mt-8
+
+                        leading-8
+
+                        text-slate-400
+                    "
+                >
+
+                    {experience.description}
+
+                </p>
+
+                {/* TECHNO */}
+
+                <ExperienceTags
+
+                    technologies={experience.technologies}
+
+                />
+
+                {/* BUTTON */}
+
+                <ExperienceButton
+
+                    slug={experience.projectSlug}
+
+                />
+
+            </motion.div>
+
+            {/* TIMELINE DOT */}
+
+            <ExperienceDot/>
+
+        </div>
+
+    );
+
+};
+
+export default ExperienceCard;
+// components\sections\Experience\ExperienceDot.tsx
+import { motion } from "framer-motion";
+
+import { BriefcaseBusiness } from "lucide-react";
+
+const ExperienceDot = () => {
+
+    return (
+
+        <div
+            className="
+                absolute
+                left-1/2
+                top-1/2
+                z-20
+                hidden
+                -translate-x-1/2
+                -translate-y-1/2
+                md:flex
+            "
+        >
+
+            <motion.div
+
+                animate={{
+                    scale: [1, 1.2, 1]
+                }}
+
+                transition={{
+                    duration: 2,
+                    repeat: Infinity
+                }}
+
+                className="
+                    relative
+
+                    flex
+
+                    h-16
+
+                    w-16
+
+                    items-center
+
+                    justify-center
+
+                    rounded-full
+
+                    bg-gradient-to-br
+
+                    from-cyan-400
+
+                    to-blue-600
+
+                    shadow-[0_0_40px_rgba(59,130,246,.7)]
+                "
+
+            >
+
+                <BriefcaseBusiness
+
+                    size={26}
+
+                    className="text-white"
+
+                />
+
+            </motion.div>
+
+        </div>
+
+    );
+
+};
+
+export default ExperienceDot;
+// components\sections\Experience\ExperienceTags.tsx
+import type { ProjectTech } from "../../../types/project";
+
+interface Props {
+
+    technologies: ProjectTech[];
+
+}
+
+const ExperienceTags = ({
+
+    technologies
+
+}: Props) => {
+
+    return (
+
+        <div className="mt-8 flex flex-wrap gap-3">
+
+            {
+
+                technologies.map((tech) => (
+
+                    <span
+
+                        key={tech.name}
+
+                        style={{
+
+                            color: tech.color,
+
+                            borderColor: tech.color
+
+                        }}
+
+                        className="
+                            rounded-full
+
+                            border
+
+                            px-4
+
+                            py-2
+
+                            text-sm
+
+                            font-medium
+
+                            transition
+
+                            hover:bg-white/10
+                        "
+
+                    >
+
+                        {tech.name}
+
+                    </span>
+
+                ))
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default ExperienceTags;
+// components\sections\Experience\ExperienceTimeline.tsx
+import { motion, useScroll, useSpring } from "framer-motion";
+
+import { experience } from "../../../data/experience";
+
+import ExperienceCard from "./ExperienceCard";
+
+const ExperienceTimeline = () => {
+
+    const { scrollYProgress } = useScroll();
+
+    const scaleY = useSpring(scrollYProgress, {
+
+        stiffness: 120,
+
+        damping: 20
+
+    });
+
+    return (
+
+        <div className="relative mt-24">
+
+            {/* Desktop */}
+
+            <div
+                className="
+                    absolute
+                    left-1/2
+                    top-0
+                    hidden
+                    h-full
+                    w-1
+                    -translate-x-1/2
+                    rounded-full
+                    bg-slate-800
+                    md:block
+                "
+            />
+
+            <motion.div
+
+                style={{
+                    scaleY,
+                    transformOrigin: "top"
+                }}
+
+                className="
+                    absolute
+                    left-1/2
+                    top-0
+                    hidden
+                    h-full
+                    w-1
+                    -translate-x-1/2
+                    rounded-full
+
+                    bg-gradient-to-b
+
+                    from-cyan-400
+
+                    via-blue-500
+
+                    to-indigo-600
+
+                    md:block
+                "
+
+            />
+
+            {/* Mobile */}
+
+            <div
+                className="
+                    absolute
+                    left-6
+                    top-0
+                    h-full
+                    w-1
+                    rounded-full
+                    bg-slate-800
+                    md:hidden
+                "
+            />
+
+            <motion.div
+
+                style={{
+                    scaleY,
+                    transformOrigin: "top"
+                }}
+
+                className="
+                    absolute
+                    left-6
+                    top-0
+                    h-full
+                    w-1
+
+                    rounded-full
+
+                    bg-gradient-to-b
+
+                    from-cyan-400
+
+                    via-blue-500
+
+                    to-indigo-600
+
+                    md:hidden
+                "
+
+            />
+
+            <div className="space-y-24">
+
+                {
+
+                    experience.map((item, index) => (
+
+                        <ExperienceCard
+
+                            key={item.id}
+
+                            experience={item}
+
+                            index={index}
+
+                        />
+
+                    ))
+
+                }
+
+            </div>
+
+        </div>
+
+    );
+
+};
+
+export default ExperienceTimeline;
+// components\sections\Experience\index.ts
+export { default } from "./Experience";
+// components\sections\Footer\BackToTop.tsx
+import { useEffect,useState } from "react";
+
+import { ChevronUp } from "lucide-react";
+
+import { motion,AnimatePresence } from "framer-motion";
+
+const BackToTop=()=>{
+
+    const[visible,setVisible]=useState(false);
+
+    useEffect(()=>{
+
+        const handleScroll=()=>{
+
+            setVisible(window.scrollY>500);
+
+        };
+
+        window.addEventListener("scroll",handleScroll);
+
+        return()=>window.removeEventListener("scroll",handleScroll);
+
+    },[]);
+
+    return(
+
+        <AnimatePresence>
+
+            {
+
+                visible && (
+
+                    <motion.button
+
+                        initial={{
+
+                            opacity:0,
+
+                            scale:.7
+
+                        }}
+
+                        animate={{
+
+                            opacity:1,
+
+                            scale:1
+
+                        }}
+
+                        exit={{
+
+                            opacity:0,
+
+                            scale:.7
+
+                        }}
+
+                        onClick={()=>window.scrollTo({
+
+                            top:0,
+
+                            behavior:"smooth"
+
+                        })}
+
+                        className="
+
+                            fixed
+
+                            bottom-8
+
+                            right-8
+
+                            z-50
+
+                            flex
+
+                            h-14
+
+                            w-14
+
+                            items-center
+
+                            justify-center
+
+                            rounded-full
+
+                            bg-blue-600
+
+                            text-white
+
+                            shadow-xl
+
+                            transition
+
+                            hover:bg-blue-500
+
+                        "
+
+                    >
+
+                        <ChevronUp/>
+
+                    </motion.button>
+
+                )
+
+            }
+
+        </AnimatePresence>
+
+    );
+
+};
+
+export default BackToTop;
+// components\sections\Footer\Footer.tsx
+import Container from "../../ui/Container";
+
+import FooterCTA from "./FooterCTA";
+import FooterLinks from "./FooterLinks";
+import FooterSocial from "./FooterSocial";
+import FooterBottom from "./FooterBottom";
+import BackToTop from "./BackToTop";
+
+const Footer = () => {
+
+    return (
+
+        <footer className="pt-32 pb-10">
+
+            <Container>
+
+                <FooterCTA/>
+
+                <FooterLinks/>
+
+                <FooterSocial/>
+
+                <FooterBottom/>
+
+            </Container>
+
+            <BackToTop/>
+
+        </footer>
+
+    );
+
+};
+
+export default Footer;
+// components\sections\Footer\FooterBottom.tsx
+const FooterBottom = () => {
+
+    return (
+
+        <div
+            className="
+
+                mt-16
+
+                border-t
+
+                border-slate-800
+
+                pt-8
+
+                text-center
+
+            "
+        >
+
+            <p
+                className="
+
+                    text-slate-400
+
+                "
+            >
+
+                © {new Date().getFullYear()}
+
+                {" "}
+
+                <span className="font-semibold text-white">
+
+                    Zitouni Oussama
+
+                </span>
+
+            </p>
+
+            <p
+                className="
+
+                    mt-3
+
+                    text-sm
+
+                    text-slate-500
+
+                "
+            >
+
+                Made with ❤️ using
+
+                {" "}
+
+                React
+
+                {" • "}
+
+                TypeScript
+
+                {" • "}
+
+                TailwindCSS
+
+                {" • "}
+
+                Framer Motion
+
+            </p>
+
+        </div>
+
+    );
+
+};
+
+export default FooterBottom;
+// components\sections\Footer\FooterCTA.tsx
+import { motion } from "framer-motion";
+
+import { ArrowRight } from "lucide-react";
+
+const FooterCTA = () => {
+
+    return (
+
+        <motion.div
+
+            initial={{
+                opacity:0,
+                y:60
+            }}
+
+            whileInView={{
+                opacity:1,
+                y:0
+            }}
+
+            viewport={{
+                once:true
+            }}
+
+            transition={{
+                duration:.8
+            }}
+
+            className="
+
+                relative
+
+                overflow-hidden
+
+                rounded-[32px]
+
+                bg-gradient-to-r
+
+                from-blue-600
+
+                via-cyan-500
+
+                to-indigo-600
+
+                px-10
+
+                py-20
+
+                text-center
+
+            "
+
+        >
+
+            {/* Glow */}
+
+            <div
+                className="
+                    absolute
+
+                    -top-24
+
+                    left-1/2
+
+                    h-72
+
+                    w-72
+
+                    -translate-x-1/2
+
+                    rounded-full
+
+                    bg-white/10
+
+                    blur-3xl
+                "
+            />
+
+            <h2
+                className="
+                    relative
+
+                    text-5xl
+
+                    font-black
+
+                    text-white
+                "
+            >
+
+                Let's Build
+
+                <br/>
+
+                Something Amazing
+
+            </h2>
+
+            <p
+                className="
+                    relative
+
+                    mx-auto
+
+                    mt-8
+
+                    max-w-3xl
+
+                    text-lg
+
+                    leading-8
+
+                    text-blue-100
+                "
+            >
+
+                I'm currently available for internships,
+
+                freelance projects and full-time opportunities.
+
+                If you have an idea, let's make it happen.
+
+            </p>
+
+            <a
+
+                href="#contact"
+
+                className="
+
+                    relative
+
+                    mt-12
+
+                    inline-flex
+
+                    items-center
+
+                    gap-3
+
+                    rounded-2xl
+
+                    bg-white
+
+                    px-10
+
+                    py-5
+
+                    font-bold
+
+                    text-blue-600
+
+                    transition
+
+                    hover:scale-105
+
+                "
+
+            >
+
+                Contact Me
+
+                <ArrowRight size={22}/>
+
+            </a>
+
+        </motion.div>
+
+    );
+
+};
+
+export default FooterCTA;
+// components\sections\Footer\FooterLinks.tsx
+import { motion } from "framer-motion";
+
+const links = [
+
+    {
+        title:"Home",
+        href:"#hero"
+    },
+
+    {
+        title:"About",
+        href:"#about"
+    },
+
+    {
+        title:"Skills",
+        href:"#skills"
+    },
+
+    {
+        title:"Projects",
+        href:"#projects"
+    },
+
+    {
+        title:"Education",
+        href:"#education"
+    },
+
+    {
+        title:"Experience",
+        href:"#experience"
+    },
+
+    {
+        title:"Contact",
+        href:"#contact"
+    },
+
+];
+
+const FooterLinks = () => {
+
+    return (
+
+        <motion.div
+
+            initial={{
+
+                opacity:0,
+
+                y:40
+
+            }}
+
+            whileInView={{
+
+                opacity:1,
+
+                y:0
+
+            }}
+
+            viewport={{
+
+                once:true
+
+            }}
+
+            transition={{
+
+                duration:.7
+
+            }}
+
+            className="
+
+                mt-20
+
+                flex
+
+                flex-wrap
+
+                justify-center
+
+                gap-8
+
+            "
+
+        >
+
+            {
+
+                links.map(link=>(
+
+                    <a
+
+                        key={link.title}
+
+                        href={link.href}
+
+                        className="
+
+                            font-medium
+
+                            text-slate-400
+
+                            transition
+
+                            hover:text-blue-400
+
+                        "
+
+                    >
+
+                        {link.title}
+
+                    </a>
+
+                ))
+
+            }
+
+        </motion.div>
+
+    );
+
+};
+
+export default FooterLinks;
+// components\sections\Footer\FooterSocial.tsx
+import { socials } from "../../../data/social";
+
+import { motion } from "framer-motion";
+
+const FooterSocial = () => {
+
+    return (
+
+        <motion.div
+
+            initial={{
+
+                opacity:0
+
+            }}
+
+            whileInView={{
+
+                opacity:1
+
+            }}
+
+            viewport={{
+
+                once:true
+
+            }}
+
+            transition={{
+
+                delay:.2
+
+            }}
+
+            className="
+
+                mt-14
+
+                flex
+
+                justify-center
+
+                gap-5
+
+            "
+
+        >
+
+            {
+
+                socials.map(item=>{
+
+                    const Icon=item.icon;
+
+                    return(
+
+                        <motion.a
+
+                            whileHover={{
+
+                                scale:1.15,
+
+                                rotate:8
+
+                            }}
+
+                            whileTap={{
+
+                                scale:.9
+
+                            }}
+
+                            key={item.name}
+
+                            href={item.url}
+
+                            target="_blank"
+
+                            rel="noopener noreferrer"
+
+                            style={{
+
+                                borderColor:item.color,
+
+                                color:item.color
+
+                            }}
+
+                            className="
+
+                                flex
+
+                                h-14
+
+                                w-14
+
+                                items-center
+
+                                justify-center
+
+                                rounded-full
+
+                                border-2
+
+                                text-2xl
+
+                                transition
+
+                            "
+
+                        >
+
+                            <Icon/>
+
+                        </motion.a>
+
+                    );
+
+                })
+
+            }
+
+        </motion.div>
+
+    );
+
+};
+
+export default FooterSocial;
+// components\sections\Footer\index.ts
+export { default } from "./Footer";
+// components\sections\Hero\FloatingCard.tsx
+import type { ReactNode } from "react";
+import { motion } from "framer-motion";
+
+interface FloatingCardProps {
+    icon: ReactNode;
+    title: string;
+    subtitle: string;
+    className?: string;
+}
+
+const FloatingCard = ({
+    icon,
+    title,
+    subtitle,
+    className = "",
+}: FloatingCardProps) => {
+    return (
+        <motion.div
+            animate={{
+                y: [0, -12, 5],
+            }}
+            transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+            className={`
+                absolute
+                rounded-2xl
+                border
+                border-white/10
+                bg-slate-900/90
+                backdrop-blur-xl
+                px-5
+                py-4
+                shadow-2xl
+                ${className}
+            `}
+        >
+            <div className="flex items-center gap-3">
+
+                <div className="text-3xl">
+                    {icon}
+                </div>
+
+                <div>
+
+                    <h4 className="font-bold text-white">
+                        {title}
+                    </h4>
+
+                    <p className="text-sm text-slate-400">
+                        {subtitle}
+                    </p>
+
+                </div>
+
+            </div>
+        </motion.div>
+    );
+};
+
+export default FloatingCard;
+// components\sections\Hero\Hero.tsx
+import Container from "../../ui/Container";
+
+import ScrollIndicator from "./ScrollIndicator";
+import HeroContent from "./HeroContent";
+import HeroImage from "./HeroImage";
+
+import { motion } from "framer-motion";
+
+const Hero = () => {
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden flex items-center"
+    >
+      {/* Background Blur */}
+
+      <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[150px]" />
+
+      <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[150px]" />
+
+      <Container>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
+          className="grid items-center gap-20 lg:grid-cols-2"
+        >
+          <HeroContent />
+
+          <HeroImage />
+        </motion.div>
+      </Container>
+
+      <ScrollIndicator />
+    </section>
+  );
+};
+
+export default Hero;
+
+// components\sections\Hero\HeroContent.tsx
+import { Download, FolderOpen } from "lucide-react";
+
+import Button from "../../ui/Button";
+import Badge from "../../ui/Badge";
+
+import HeroStats from "./HeroStats";
+import HeroTech from "./HeroTech";
+import { heroData } from "../../../data/hero";
+
+import { TypeAnimation } from "react-type-animation";
+import HeroSocial from "./HeroSocial";
+
+const HeroContent = () => {
+  return (
+    <div>
+      <br />
+      <Badge>🟢 Available for Work</Badge>
+
+      <p className="mt-8 text-xl text-slate-300">Hello, I'm</p>
+
+      <h1>
+        {heroData.firstName}
+
+        <br />
+
+        <span>{heroData.lastName}</span>
+      </h1>
+
+      {/* <h2 className="mt-6 text-3xl font-semibold text-slate-300">
+        <span>{heroData.title}</span>
+      </h2> */}
+
+      <TypeAnimation
+        sequence={[
+          "Software Engineer",
+          2000,
+          "Full Stack Developer",
+          2000,
+          "AI Engineer",
+          2000,
+          "Java Developer",
+          2000,
+        ]}
+        wrapper="h2"
+        speed={80}
+        repeat={Infinity}
+        className="mt-6 text-3xl font-bold text-blue-400"
+      />
+
+
+      <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+        <span>{heroData.description}</span>
+      </p>
+
+      <div className="mt-10 flex flex-wrap gap-5">
+        <Button>
+          <FolderOpen size={18} />
+          View Projects
+        </Button>
+
+        <Button variant="outline">
+          <Download size={18} />
+          Download CV
+        </Button>
+      </div>
+
+      <HeroStats />
+
+      <HeroTech />
+
+      <HeroSocial />
+    </div>
+  );
+};
+
+export default HeroContent;
+
+// components\sections\Hero\HeroImage.tsx
+import { motion } from "framer-motion";
+
+import {
+    FaJava,
+    FaReact,
+    FaPython,
+    FaHtml5
+} from "react-icons/fa";
+
+import photo from "../../../assets/images/photo.png";
+
+import FloatingCard from "./FloatingCard";
+
+const HeroImage = () => {
+
+    return (
+
+        <div className="relative flex justify-center">
+
+            <div className="absolute h-[450px] w-[450px] rounded-full bg-blue-600/20 blur-[140px]" />
+
+            <motion.img
+                src={photo}
+                alt="Zitouni Oussama"
+                initial={{
+                    opacity: 0,
+                    scale: .8
+                }}
+                animate={{
+                    opacity: 1,
+                    scale: 1
+                }}
+                transition={{
+                    duration: .8
+                }}
+                className="relative z-10 w-[380px] rounded-[40px] border border-white/10 shadow-2xl"
+            />
+
+            <FloatingCard
+                icon={<FaJava color="#F89820" />}
+                title="Java"
+                subtitle="Backend"
+                className="-left-5 top-20"
+            />
+
+            <FloatingCard
+                icon={<FaReact color="#61DAFB" />}
+                title="React"
+                subtitle="Frontend"
+                className="-right-5 top-40"
+            />
+
+            <FloatingCard
+                icon={<FaPython color="#3776AB" />}
+                title="Python"
+                subtitle="AI"
+                className="bottom-10 left-0"
+            />
+
+            <FloatingCard
+                icon={<FaHtml5 color="#3776AB" />}
+                title="HTML"
+                subtitle="Web"
+                className="right-5 bottom-10"
+            />
+
+        </div>
+
+    );
+
+};
+
+export default HeroImage;
+// components\sections\Hero\HeroSocial.tsx
+import { socials } from "../../../data/social";
+
+const HeroSocial = () => {
+
+    return (
+
+        <div className="mt-10 flex gap-5">
+
+            {
+
+                socials.map((social) => {
+
+                    const Icon = social.icon;
+
+                    return (
+
+                        <a
+                            key={social.name}
+                            href={social.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-500/10"
+                        >
+
+                            <Icon size={22} />
+
+                        </a>
+
+                    );
+
+                })
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default HeroSocial;
+// components\sections\Hero\HeroStats.tsx
+import Card from "../../ui/Card";
+import { heroStats } from "../../../data/stats";
+
+const HeroStats = () => {
+    return (
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+
+            {heroStats.map((stat) => {
+
+                const Icon = stat.icon;
+
+                return (
+                    <Card
+                        key={stat.title}
+                        className="text-center transition-all duration-300 hover:-translate-y-2"
+                    >
+                        <Icon
+                            size={32}
+                            className="mx-auto mb-4 text-blue-400"
+                        />
+
+                        <h3 className="text-3xl font-black text-white">
+                            {stat.number}
+                        </h3>
+
+                        <p className="mt-2 text-sm text-slate-400">
+                            {stat.title}
+                        </p>
+
+                    </Card>
+                );
+
+            })}
+
+        </div>
+    );
+};
+
+export default HeroStats;
+// components\sections\Hero\HeroTech.tsx
+import { heroSkills } from "../../../data/skills";
+
+const HeroTech = () => {
+    return (
+        <div className="mt-12 flex flex-wrap gap-4">
+
+            {heroSkills.map((skill) => {
+
+                const Icon = skill.icon;
+
+                return (
+                    <div
+                        key={skill.name}
+                        className="
+                            flex items-center gap-3
+                            rounded-full
+                            border border-slate-700
+                            bg-slate-900/80
+                            px-5
+                            py-3
+                            transition-all
+                            duration-300
+                            hover:-translate-y-1
+                            hover:border-blue-500
+                        "
+                    >
+                        <Icon
+                            size={22}
+                            color={skill.color}
+                        />
+
+                        <span className="text-sm font-medium text-slate-300">
+                            {skill.name}
+                        </span>
+
+                    </div>
+                );
+
+            })}
+
+        </div>
+    );
+};
+
+export default HeroTech;
+// components\sections\Hero\index.ts
+export { default } from "./Hero";
+// components\sections\Hero\ScrollIndicator.tsx
+import { ChevronDown } from "lucide-react";
+
+const ScrollIndicator = () => {
+
+    return (
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+
+            <div className="flex flex-col items-center">
+
+                <span className="mb-3 text-sm text-slate-500">
+
+                    Scroll
+
+                </span>
+
+                <ChevronDown
+                    className="animate-bounce text-blue-500"
+                    size={28}
+                />
+
+            </div>
+
+        </div>
+
+    );
+
+};
+
+export default ScrollIndicator;
+// components\sections\Projects\index.ts
+export { default } from "./Projects";
+// components\sections\Projects\LoadMore.tsx
+interface Props {
+
+    visible:number;
+
+    total:number;
+
+    onLoadMore:()=>void;
+
+    onShowLess:()=>void;
+
+}
+
+const LoadMore = ({
+
+    visible,
+
+    total,
+
+    onLoadMore,
+
+    onShowLess
+
+}:Props)=>{
+
+    if(total<=6) return null;
+
+    return(
+
+        <div className="mt-20 flex justify-center">
+
+            {
+
+                visible<total?
+
+                (
+
+                    <button
+
+                        onClick={onLoadMore}
+
+                        className="
+                            rounded-xl
+                            bg-blue-600
+                            px-8
+                            py-4
+                            font-semibold
+                            text-white
+                            transition
+                            hover:bg-blue-500
+                        "
+
+                    >
+
+                        Load More
+
+                    </button>
+
+                )
+
+                :
+
+                (
+
+                    <button
+
+                        onClick={onShowLess}
+
+                        className="
+                            rounded-xl
+                            border
+                            border-blue-500
+                            px-8
+                            py-4
+                            font-semibold
+                            text-blue-400
+                            transition
+                            hover:bg-blue-500
+                            hover:text-white
+                        "
+
+                    >
+
+                        Show Less
+
+                    </button>
+
+                )
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default LoadMore;
+// components\sections\Projects\ProjectButtons.tsx
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+interface Props {
+    slug: string;
+}
+
+const ProjectButtons = ({ slug }: Props) => {
+    return (
+        <div className="mt-8">
+
+            <Link
+                to={`/projects/${slug}`}
+                className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    rounded-xl
+                    bg-blue-600
+                    px-5
+                    py-3
+                    font-semibold
+                    text-white
+                    transition
+                    hover:bg-blue-500
+                "
+            >
+                View Project
+                <ArrowRight size={18} />
+            </Link>
+
+        </div>
+    );
+};
+
+export default ProjectButtons;
+// components\sections\Projects\ProjectCard.tsx
+import { motion } from "framer-motion";
+
+import Card from "../../ui/Card";
+
+import ProjectImage from "./ProjectImage";
+import ProjectContent from "./ProjectContent";
+
+import type { Project } from "../../../types/project";
+
+interface Props {
+
+    project: Project;
+
+}
+
+const ProjectCard = ({ project }: Props) => {
+
+    return (
+
+        <motion.div
+
+            initial={{
+                opacity:0,
+                y:40
+            }}
+
+            whileInView={{
+                opacity:1,
+                y:0
+            }}
+
+            viewport={{
+                once:true
+            }}
+
+            transition={{
+                duration:.6
+            }}
+
+            whileHover={{
+                y:-8
+            }}
+
+        >
+
+            <Card className="overflow-hidden p-0">
+
+                <ProjectImage
+
+                    project={project}
+
+                />
+
+                <ProjectContent
+
+                    project={project}
+
+                />
+
+            </Card>
+
+        </motion.div>
+
+    );
+
+};
+
+export default ProjectCard;
+// components\sections\Projects\ProjectContent.tsx
+import type { Project } from "../../../types/project";
+
+import ProjectButtons from "./ProjectButtons";
+import ProjectTags from "./ProjectTags";
+
+interface Props {
+  project: Project;
+}
+
+const ProjectContent = ({ project }: Props) => {
+  return (
+    <div className="p-8">
+      <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+
+      <p className="mt-2 text-blue-400">{project.subtitle}</p>
+
+      <p className="mt-5 leading-7 text-slate-400">{project.description}</p>
+
+      <ProjectTags technologies={project.technologies} />
+
+      <ProjectButtons slug={project.slug} />
+    </div>
+  );
+};
+
+export default ProjectContent;
+
+// components\sections\Projects\ProjectGrid.tsx
+import ProjectCard from "./ProjectCard";
+import type { Project } from "../../../types/project";
+
+interface Props {
+    projects: Project[];
+}
+
+const ProjectGrid = ({ projects }: Props) => {
+
+    return (
+
+        <div
+            className="
+                mt-16
+                grid
+                gap-8
+                md:grid-cols-2
+                xl:grid-cols-3
+            "
+        >
+
+            {
+
+                projects.map(project => (
+
+                    <ProjectCard
+
+                        key={project.id}
+
+                        project={project}
+
+                    />
+
+                ))
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default ProjectGrid;
+// components\sections\Projects\ProjectImage.tsx
+import { motion } from "framer-motion";
+import type { Project } from "../../../types/project";
+
+interface Props {
+    project: Project;
+}
+
+const ProjectImage = ({ project }: Props) => {
+
+    return (
+
+        <div className="group relative overflow-hidden">
+
+            <motion.img
+
+                whileHover={{
+                    scale: 1.08
+                }}
+
+                transition={{
+                    duration: .6
+                }}
+
+                src={project.cover}
+
+                alt={project.title}
+
+                className="
+                    h-72
+                    w-full
+                    object-cover
+                "
+
+            />
+
+            <div
+                className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-slate-950
+                    via-slate-950/20
+                    to-transparent
+                "
+            />
+
+        </div>
+
+    );
+
+};
+
+export default ProjectImage;
+// components\sections\Projects\Projects.tsx
+import { useMemo, useState } from "react";
+
+import Container from "../../ui/Container";
+import SectionTitle from "../../ui/SectionTitle";
+
+import { projects } from "../../../data/projects";
+
+import ProjectGrid from "./ProjectGrid";
+import ProjectToolbar from "./ProjectToolbar";
+import LoadMore from "./LoadMore";
+
+const ITEMS_PER_PAGE = 6;
+
+const Projects = () => {
+  const [search, setSearch] = useState("");
+
+  const [selected, setSelected] = useState("All");
+
+  const [visible, setVisible] = useState(ITEMS_PER_PAGE);
+
+  const categories = useMemo(() => {
+    const all = new Set<string>();
+
+    projects.forEach((project) => {
+      project.categories.forEach((category) => {
+        all.add(category);
+      });
+    });
+
+    return ["All", ...Array.from(all).sort()];
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const matchesCategory =
+        selected === "All" || project.categories.includes(selected);
+
+      const value = search.toLowerCase();
+
+      const keyword = search.trim().toLowerCase();
+
+      const matchesSearch =
+        keyword === "" || project.title.trim().toLowerCase().includes(keyword);
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [search, selected]);
+
+  const displayedProjects = filteredProjects.slice(0, visible);
+
+  return (
+    <section id="projects" className="py-32">
+      <Container>
+        <SectionTitle title="Featured Projects" subtitle="Things I've Built" />
+
+        <ProjectToolbar
+          search={search}
+          onSearch={(value) => {
+            setSearch(value);
+
+            setVisible(ITEMS_PER_PAGE);
+          }}
+          selected={selected}
+          onSelect={(value) => {
+            setSelected(value);
+
+            setVisible(ITEMS_PER_PAGE);
+          }}
+          categories={categories}
+        />
+
+        <ProjectGrid projects={displayedProjects} />
+
+        <LoadMore
+          visible={visible}
+          total={filteredProjects.length}
+          onLoadMore={() => setVisible((v) => v + ITEMS_PER_PAGE)}
+          onShowLess={() => setVisible(ITEMS_PER_PAGE)}
+        />
+      </Container>
+    </section>
+  );
+};
+
+export default Projects;
+
+// components\sections\Projects\ProjectsFilter.tsx
+interface Props{
+
+    categories:string[];
+
+    selected:string;
+
+    onSelect:(category:string)=>void;
+
+}
+
+const ProjectFilters = ({
+
+    categories,
+
+    selected,
+
+    onSelect
+
+}:Props)=>{
+
+    return(
+
+        <div
+            className="
+                mt-8
+                flex
+                flex-wrap
+                justify-center
+                gap-3
+            "
+        >
+
+            {
+
+                categories.map(category=>(
+
+                    <button
+
+                        key={category}
+
+                        onClick={()=>onSelect(category)}
+
+                        className={`
+
+                            rounded-full
+
+                            px-5
+
+                            py-2
+
+                            text-sm
+
+                            font-semibold
+
+                            transition
+
+                            ${
+                                selected===category
+
+                                ?
+
+                                "bg-blue-600 text-white"
+
+                                :
+
+                                "bg-slate-800 text-slate-300 hover:bg-slate-700"
+
+                            }
+
+                        `}
+
+                    >
+
+                        {category}
+
+                    </button>
+
+                ))
+
+            }
+
+        </div>
+
+    );
+
+};
+
+export default ProjectFilters;
+// components\sections\Projects\ProjectsSearch.tsx
+interface Props {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+import { Search } from "lucide-react";
+
+const ProjectSearch = ({ value, onChange }: Props) => {
+
+    return (
+
+        <div className="relative w-full md:max-w-md">
+
+            <Search
+                size={18}
+                className="
+                    absolute
+                    left-4
+                    top-1/2
+                    -translate-y-1/2
+                    text-slate-500
+                "
+            />
+
+            <input
+
+                type="text"
+
+                value={value}
+
+                onChange={(e)=>onChange(e.target.value)}
+
+                placeholder="Search projects..."
+
+                className="
+                    w-full
+                    rounded-xl
+                    border
+                    border-slate-700
+                    bg-slate-900
+                    py-3
+                    pl-11
+                    pr-4
+                    text-white
+                    outline-none
+                    transition
+                    focus:border-blue-500
+                "
+
+            />
+
+        </div>
+
+    );
+
+};
+
+export default ProjectSearch;
+// components\sections\Projects\ProjectTags.tsx
+import type { ProjectTech } from "../../../types/project";
+
+interface ProjectTagsProps {
+    technologies: ProjectTech[];
+}
+
+const ProjectTags = ({ technologies }: ProjectTagsProps) => {
+    return (
+        <div className="mt-5 flex flex-wrap gap-2">
+
+            {technologies.map((tech) => (
+
+                <span
+                    key={tech.name}
+                    style={{
+                        borderColor: tech.color,
+                        color: tech.color,
+                    }}
+                    className="
+                        rounded-full
+                        border
+                        px-3
+                        py-1
+                        text-xs
+                        font-medium
+                        transition
+                        duration-300
+                        hover:bg-white/10
+                    "
+                >
+                    {tech.name}
+                </span>
+
+            ))}
+
+        </div>
+    );
+};
+
+export default ProjectTags;
+// components\sections\Projects\ProjectToolbar.tsx
+import ProjectFilters from "./ProjectsFilter";
+import ProjectSearch from "./ProjectsSearch";
+
+interface Props{
+
+    search:string;
+
+    onSearch:(value:string)=>void;
+
+    selected:string;
+
+    onSelect:(value:string)=>void;
+
+    categories:string[];
+
+}
+
+const ProjectToolbar=(props:Props)=>{
+
+    return(
+
+        <>
+
+            <div className="mt-12 flex justify-center">
+
+                <ProjectSearch
+
+                    value={props.search}
+
+                    onChange={props.onSearch}
+
+                />
+
+            </div>
+
+            <ProjectFilters
+
+                categories={props.categories}
+
+                selected={props.selected}
+
+                onSelect={props.onSelect}
+
+            />
+
+        </>
+
+    );
+
+};
+
+export default ProjectToolbar;
+// components\sections\Skills\index.ts
+export { default } from "./Skills";
+// components\sections\Skills\SkillCard.tsx
+import { motion } from "framer-motion";
+
+import type { Skill } from "../../../types/skills";
+
+import Card from "../../ui/Card";
+import SkillProgress from "./SkillProgress";
+
+interface SkillCardProps{
+    skill:Skill;
+}
+
+const SkillCard = ({ skill }: SkillCardProps) => {
+
+    const Icon = skill.icon;
+
+    return (
+
+        <motion.div
+
+            initial={{
+                opacity:0,
+                y:30
+            }}
+
+            whileInView={{
+                opacity:1,
+                y:0
+            }}
+
+            viewport={{
+                once:true
+            }}
+
+            whileHover={{
+                y:-8,
+                scale:1.02
+            }}
+
+        >
+
+            <Card>
+
+                <div className="flex items-center gap-4">
+
+                    <Icon
+
+                        size={34}
+
+                        color={skill.color}
+
+                    />
+
+                    <div>
+
+                        <h3 className="font-semibold">
+
+                            {skill.name}
+
+                        </h3>
+
+                        <p className="text-sm text-slate-400">
+
+                            {skill.category}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <SkillProgress
+
+                    level={skill.level}
+
+                />
+
+            </Card>
+
+        </motion.div>
+
+    );
+
+};
+
+export default SkillCard;
+// components\sections\Skills\SkillCategory.tsx
+import { skills } from "../../../data/skills";
+
+import SkillCard from "./SkillCard";
+
+interface SkillCategoryProps{
+
+    category:string;
+
+}
+
+const SkillCategory = ({
+
+    category
+
+}:SkillCategoryProps)=>{
+
+    const categorySkills = skills.filter(
+
+        skill=>skill.category===category
+
+    );
+
+    return(
+
+        <section className="mb-20">
+
+            <h2 className="mb-8 text-3xl font-bold">
+
+                {category}
+
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+                {
+
+                    categorySkills.map(skill=>(
+
+                        <SkillCard
+
+                            key={skill.id}
+
+                            skill={skill}
+
+                        />
+
+                    ))
+
+                }
+
+            </div>
+
+        </section>
+
+    );
+
+};
+
+export default SkillCategory;
+// components\sections\Skills\SkillProgress.tsx
+import { motion } from "framer-motion";
+
+interface SkillProgressProps {
+  level: number;
+}
+
+const SkillProgress = ({ level }: SkillProgressProps) => {
+  return (
+    <div className="mt-5">
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-sm text-slate-400">Proficiency</span>
+
+        <span className="font-semibold text-blue-400">{level}%</span>
+      </div>
+
+      <div className="relative h-2 overflow-hidden rounded-full bg-slate-800">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${level}%` }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 1.5,
+            ease: "easeOut",
+          }}
+          className="relative h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500"
+        >
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "250%" }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="
+        absolute
+        top-0
+        h-full
+        w-8
+        -skew-x-12
+        bg-white/30
+        blur-[2px]
+      "
+          />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default SkillProgress;
+// components\sections\Skills\Skills.tsx
+import Container from "../../ui/Container";
+import SectionTitle from "../../ui/SectionTitle";
+
+import SkillCategory from "./SkillCategory";
+
+const Skills = () => {
+
+    return (
+
+        <section
+            id="skills"
+            className="py-32"
+        >
+
+            <Container>
+
+                <SectionTitle
+
+                    title="My Skills"
+
+                    subtitle="Technologies & Tools"
+
+                />
+
+                <SkillCategory category="Backend"/>
+
+                <SkillCategory category="Frontend"/>
+
+                <SkillCategory category="Mobile"/>
+
+                <SkillCategory category="AI"/>
+
+                <SkillCategory category="Database"/>
+
+                <SkillCategory category="Tools"/>
+
+            </Container>
+
+        </section>
+
+    );
+
+};
+
+export default Skills;
+// components\ui\Badge\Badge.tsx
+import type { HTMLAttributes, ReactNode } from "react";
+import { cn } from "../../../utils/cn";
+
+type BadgeVariant =
+  | "primary"
+  | "success"
+  | "warning";
+
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+  children: ReactNode;
+  variant?: BadgeVariant;
+}
+
+const variants = {
+  primary:
+    "bg-blue-600/20 text-blue-400 border border-blue-500/30",
+
+  success:
+    "bg-green-600/20 text-green-400 border border-green-500/30",
+
+  warning:
+    "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30",
+};
+
+const Badge = ({
+  children,
+  variant = "primary",
+  className,
+  ...props
+}: BadgeProps) => {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full px-3 py-1 text-sm font-medium",
+        variants[variant],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+};
+
+export default Badge;
+// components\ui\Badge\index.ts
+export { default } from "./Badge";
+// components\ui\Button\Button.tsx
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { cn } from "../../../utils/cn";
+
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+
+type ButtonSize = "sm" | "md" | "lg";
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  fullWidth?: boolean;
+}
+
+const variantClasses = {
+  primary:
+    "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20",
+
+  secondary: "bg-slate-800 hover:bg-slate-700 text-white",
+
+  outline: "border border-blue-500 text-blue-400 hover:bg-blue-500/10",
+
+  ghost: "text-slate-300 hover:bg-slate-800",
+};
+
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+
+  md: "px-6 py-3 text-base",
+
+  lg: "px-8 py-4 text-lg",
+};
+
+const Button = ({
+  children,
+  variant = "primary",
+  size = "md",
+  fullWidth = false,
+  className,
+  ...props
+}: ButtonProps) => {
+  return (
+    <button
+      className={cn(
+        "inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
+        variantClasses[variant],
+        sizeClasses[size],
+        fullWidth && "w-full",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+// components\ui\Button\index.ts
+export { default } from "./button"
+// components\ui\Card\Card.tsx
+import type { HTMLAttributes, ReactNode } from "react";
+import { cn } from "../../../utils/cn";
+
+type CardVariant = "default" | "glass" | "outlined";
+
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode;
+  variant?: CardVariant;
+}
+
+const variants = {
+  default: "bg-slate-900 border border-slate-800 shadow-xl",
+
+  glass: "bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl",
+
+  outlined: "border border-slate-700 bg-transparent",
+};
+
+const Card = ({
+  children,
+  variant = "glass",
+  className,
+  ...props
+}: CardProps) => {
+  return (
+    <div
+      className={cn(
+        "rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1",
+        variants[variant],
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default Card;
+
+// components\ui\Card\index.ts
+export { default } from "./Card";
+// components\ui\Container\Container.tsx
+import type { ReactNode } from "react";
+
+interface ContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const Container = ({ children, className = "" }: ContainerProps) => {
+  return (
+    <div
+      className={`
+        mx-auto
+        w-full
+        max-w-7xl
+        px-6
+        md:px-8
+        lg:px-12
+        xl:px-16
+        ${className}
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default Container;
+
+// components\ui\Container\index.ts
+export { default } from "./Container";
+// components\ui\SectionTitle\index.ts
+export { default } from "./SectionTitle";
+// components\ui\SectionTitle\SectionTitle.tsx
+import Badge from "../Badge";
+
+interface SectionTitleProps {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  align?: "left" | "center";
+}
+
+const SectionTitle = ({
+  badge,
+  title,
+  subtitle,
+  align = "center",
+}: SectionTitleProps) => {
+  return (
+    <div
+      className={`mb-16 ${
+        align === "center" ? "text-center" : "text-left"
+      }`}
+    >
+      {badge && (
+        <Badge className="mb-4">
+          {badge}
+        </Badge>
+      )}
+
+      <h2 className="text-4xl md:text-5xl font-black text-white">
+        {title}
+      </h2>
+
+      {subtitle && (
+        <p className="mt-5 max-w-3xl text-slate-400 text-lg leading-8 mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default SectionTitle;
+// data\about.ts
+import photo from "../assets/images/photo.png";
+
+export const aboutData = {
+
+    title: "About Me",
+
+    subtitle: "Who am I?",
+
+    image: photo,
+
+    description: `
+
+Software Engineer graduated with a Master's degree in STIC.
+
+Passionate about Software Engineering,
+Artificial Intelligence,
+Web Development,
+Mobile Development
+and problem solving.
+
+I enjoy building scalable applications
+using modern technologies.
+
+`,
+
+    highlights: [
+
+        "Master STIC",
+
+        "Java",
+
+        "Spring Boot",
+
+        "React",
+
+        "Flutter",
+
+        "Artificial Intelligence",
+
+    ]
+
+};
+// data\education.ts
+import type { Education } from "../types/education";
+
+export const education:Education[]=[
+{
+
+id:1,
+
+degree:"Baccalauréat - Sciences Expérimentales",
+
+school:"Lycée",
+
+location:"Bordj Bou Arréridj",
+
+start:"2020",
+
+end:"2021",
+
+grade:"Mention Bien",
+
+description:
+"Graduated with honors and developed a strong interest in computer science and technology."
+
+},
+
+{
+
+id:2,
+
+degree:"Licence en Informatique",
+
+school:"Université Constantine 2 Abdelhamid Mehri",
+
+location:"Constantine, Algeria",
+
+start:"2021",
+
+end:"2024",
+
+grade:"Licence",
+
+description:
+"Fundamental studies in computer science including algorithms, databases, operating systems and object-oriented programming."
+
+},
+
+{
+
+id:3,
+
+degree:"Master 2 - Sciences et Technologies de l'Information et de la Communication",
+
+school:"Université Constantine 2 Abdelhamid Mehri",
+
+location:"Constantine, Algeria",
+
+start:"2025",
+
+end:"2026",
+
+grade:"Master",
+
+description:
+"Specialization in software engineering, web development, artificial intelligence and modern information systems."
+
+}
+
+
+
+];
+// data\experience.ts
+import type { Experience } from "../types/experience";
+
+export const experience:Experience[]=[
+
+{
+
+id:1,
+
+company:"Open To Work",
+
+role:"Full Stack Developer",
+
+start:"2026",
+
+end:"Present",
+
+location:"Algeria",
+
+description:
+
+"Available for internships, freelance projects and full-time opportunities in Full Stack Development, Artificial Intelligence and Mobile Development.",
+
+technologies:[
+
+{name:"React",color:"#61DAFB"},
+
+{name:"Spring Boot",color:"#6DB33F"},
+
+{name:"Flutter",color:"#42A5F5"},
+
+{name:"Python",color:"#FFD43B"}
+
+]
+
+},
+
+{
+
+id:2,
+
+company:"Université Constantine 2",
+
+role:"Graduation Project - VALORIX",
+
+start:"2025",
+
+end:"2026",
+
+location:"Constantine",
+
+description:
+
+"Designed and developed VALORIX, an intelligent platform for waste collection and recycling using Spring Boot, Java, Artificial Intelligence and Android.",
+
+projectSlug:"valorix",
+
+technologies:[
+
+{name:"Spring Boot",color:"#6DB33F"},
+
+{name:"Java",color:"#F89820"},
+
+{name:"Python",color:"#FFD43B"},
+
+{name:"Android",color:"#3DDC84"}
+
+]
+
+},
+
+{
+
+id:3,
+
+company:"Personal Projects",
+
+role:"Web & Mobile Developer",
+
+start:"2024",
+
+end:"2026",
+
+location:"Remote",
+
+description:
+
+"Designed and developed multiple web and mobile applications using React, Flutter, Node.js and modern frontend technologies.",
+
+technologies:[
+
+{name:"React",color:"#61DAFB"},
+
+{name:"Flutter",color:"#42A5F5"},
+
+{name:"Node.js",color:"#68A063"}
+
+]
+
+}
+
+];
+// data\hero.ts
+export const heroData = {
+
+    firstName: "ZITOUNI",
+
+    lastName: "OUSSAMA",
+
+    title: "Software Engineer",
+
+    description:
+
+        "Passionate about Software Engineering, Artificial Intelligence, Web Development and Mobile Development. I enjoy building modern, scalable and high-performance applications.",
+
+};
+// data\projects.ts
+import type { Project } from "../types/project";
+
+// VALORIX
+
+import valorixCover from "../assets/images/valorix/cover.png";
+import valorix1 from "../assets/images/valorix/1.png";
+import valorix2 from "../assets/images/valorix/2.png";
+import valorix3 from "../assets/images/valorix/3.png";
+
+// ACHRILI
+
+import achriliCover from "../assets/images/achrili/cover.png";
+import achrili1 from "../assets/images/achrili/1.png";
+import achrili2 from "../assets/images/achrili/2.png";
+
+// TRAVEL
+
+import travelCover from "../assets/images/travel/cover.png";
+
+// RESTAURANT
+
+import restaurantCover from "../assets/images/restaurant/cover.png";
+
+// TIC TAC TOE
+
+import tictactoeCover from "../assets/images/tictactoe/cover.png";
+
+
+
+export const projects: Project[] = [
+    {
+        id: 1,
+
+        slug: "valorix",
+
+        title: "VALORIX",
+
+        subtitle: "Smart Waste Management Platform",
+
+        description:
+            "AI-powered platform for waste collection and recycling in Algeria.",
+
+        longDescription:
+            "VALORIX is an intelligent digital platform developed to modernize waste collection and recycling in Algeria. It connects citizens, collectors and administrators while integrating artificial intelligence for automatic waste classification.",
+
+        cover: valorixCover,
+
+        images: [
+            valorix1,
+            valorix2,
+            valorix3
+        ],
+
+        technologies: [
+
+            {
+                name: "Java",
+                color: "#F89820"
+            },
+
+            {
+                name: "Spring Boot",
+                color: "#6DB33F"
+            },
+
+            {
+                name: "Hibernate",
+                color: "#59666C"
+            },
+
+            {
+                name: "Oracle",
+                color: "#F80000"
+            },
+
+            {
+                name: "Python",
+                color: "#3776AB"
+            },
+
+            {
+                name: "OpenCV",
+                color: "#5C3EE8"
+            }
+
+        ],
+
+        featured: true,
+
+        role: "Full Stack & AI Developer",
+
+        duration: "2025 - 2026",
+
+        categories: [
+            "AI",
+            "Mobile",
+            "Full Stack",
+            "Web"
+        ],
+
+        features: [
+
+            "AI Waste Classification",
+
+            "Collection Requests",
+
+            "Collector Dashboard",
+
+            "Reward System",
+
+            "Wallet",
+
+            "Notifications",
+
+            "Admin Dashboard",
+
+            "Authentication"
+
+        ],
+
+    },
+
+    {
+        id: 2,
+
+        slug: "achrili-quick-shop",
+
+        title: "Achrili Quick Shop",
+
+        subtitle: "E-Commerce Mobile Application",
+
+        description:
+            "Online shopping application inspired by Alibaba and Shein.",
+
+        longDescription:
+            "Mobile e-commerce application allowing customers to browse products, place orders, manage shopping carts and securely authenticate.",
+
+        cover: achriliCover,
+
+        images: [
+            achrili1,
+            achrili2
+        ],
+
+        technologies: [
+
+            {
+                name: "Flutter",
+                color: "#02569B"
+            },
+
+            {
+                name: "PHP",
+                color: "#777BB4"
+            },
+
+            {
+                name: "MySQL",
+                color: "#4479A1"
+            }
+
+        ],
+
+        featured: true,
+        role: "Full Stack Mobile Developer",
+
+        duration: "2025",
+
+        categories: [
+            "AI",
+            "Mobile",
+            "Full Stack"
+        ],
+
+        features: [
+
+            "Authentication",
+
+            "Shopping Cart",
+
+            "Orders",
+
+            "Payment",
+
+            "Categories",
+
+            "Search",
+
+            "Favorites",
+
+            "Profile"
+
+        ],
+
+    },
+
+    {
+        id: 3,
+
+        slug: "travel-guide",
+
+        title: "Travel Guide",
+
+        subtitle: "Tourism Application",
+
+        description:
+            "Travel guide application for discovering tourist destinations.",
+
+        longDescription:
+            "Application designed to help users explore tourist attractions, hotels and restaurants.",
+
+        cover: travelCover,
+
+        images: [],
+
+        technologies: [
+
+            {
+                name: "Flutter",
+                color: "#02569B"
+            }
+
+        ],
+
+        featured: false,
+        role: "Full Stack Developer",
+
+        duration: "2024",
+
+        categories: [
+            "Web",
+            "React"
+        ],
+
+        features: [
+            "Responsive Design",
+            "Authentication",
+            "Dashboard",
+            "CRUD Operations"
+        ],
+
+    },
+
+    {
+        id: 4,
+
+        slug: "restaurant-website",
+
+        title: "Restaurant Website",
+
+        subtitle: "Restaurant Management Website",
+
+        description:
+            "Modern responsive website for restaurant presentation.",
+
+        longDescription:
+            "Responsive website including menu presentation, reservation and contact page.",
+
+        cover: restaurantCover,
+
+        images: [],
+
+        technologies: [
+
+            {
+                name: "HTML",
+                color: "#E34F26"
+            },
+
+            {
+                name: "CSS",
+                color: "#1572B6"
+            },
+
+            {
+                name: "JavaScript",
+                color: "#F7DF1E"
+            }
+
+        ],
+
+        featured: false,
+        role: "Full Stack Developer",
+
+        duration: "2024",
+
+        categories: [
+            "Web",
+            "React"
+        ],
+
+        features: [
+            "Responsive Design",
+            "Authentication",
+            "Dashboard",
+            "CRUD Operations"
+        ],
+
+    },
+
+    {
+        id: 5,
+
+        slug: "tic-tac-toe",
+
+        title: "Tic Tac Toe",
+
+        subtitle: "Game Application",
+
+        description:
+            "Classic Tic Tac Toe game.",
+
+        longDescription:
+            "Interactive game developed to practice programming logic and user interface design.",
+
+        cover: tictactoeCover,
+
+        images: [],
+
+        technologies: [
+
+            {
+                name: "Java",
+                color: "#F89820"
+            }
+
+        ],
+
+        featured: false,
+
+        role: "Full Stack Developer",
+
+        duration: "2024",
+
+        categories: [
+            "Web",
+            "React"
+        ],
+
+        features: [
+            "Responsive Design",
+            "Authentication",
+            "Dashboard",
+            "CRUD Operations"
+        ],
+
+    },
+
+]
+
+// data\skills.ts
+import type { Skills, Skill } from "../types/skills";
+
+import {
+  FaJava,
+  FaReact,
+  FaPython,
+  FaGitAlt,
+  FaNodeJs,
+  FaDocker,
+} from "react-icons/fa";
+
+import {
+  SiSpringboot,
+  SiFlutter,
+  SiPostgresql,
+  SiFirebase,
+  SiHibernate,
+  SiMongodb,
+  SiMysql,
+  SiTensorflow,
+  SiOpencv,
+  SiJavascript,
+  SiTypescript,
+  SiPostman,
+  SiAndroidstudio
+} from "react-icons/si";
+
+export const heroSkills: Skills[] = [
+  {
+    name: "Java",
+    icon: FaJava,
+    level: 90,
+    category: "Backend",
+    color: "#F89820",
+  },
+  {
+    name: "Spring Boot",
+    icon: SiSpringboot,
+    level: 85,
+    category: "Backend",
+    color: "#6DB33F",
+  },
+  {
+    name: "Hibernate",
+    icon: SiHibernate,
+    level: 85,
+    category: "Backend",
+    color: "#59666C",
+  },
+  {
+    name: "Node.js",
+    icon: FaNodeJs,
+    level: 70,
+    category: "Backend",
+    color: "#339933",
+  },
+
+  {
+    name: "React",
+    icon: FaReact,
+    level: 75,
+    category: "Frontend",
+    color: "#61DAFB",
+  },
+  {
+    name: "JavaScript",
+    icon: SiJavascript,
+    level: 80,
+    category: "Frontend",
+    color: "#F7DF1E",
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+    level: 70,
+    category: "Frontend",
+    color: "#3178C6",
+  },
+
+  {
+    name: "Flutter",
+    icon: SiFlutter,
+    level: 85,
+    category: "Mobile",
+    color: "#02569B",
+  },
+
+  {
+    name: "Python",
+    icon: FaPython,
+    level: 70,
+    category: "AI",
+    color: "#3776AB",
+  },
+  {
+    name: "TensorFlow",
+    icon: SiTensorflow,
+    level: 60,
+    category: "AI",
+    color: "#FF6F00",
+  },
+  {
+    name: "OpenCV",
+    icon: SiOpencv,
+    level: 65,
+    category: "AI",
+    color: "#5C3EE8",
+  },
+
+  {
+    name: "Oracle",
+    icon: SiPostgresql,
+    level: 85,
+    category: "Database",
+    color: "#F80000",
+  },
+  {
+    name: "MongoDB",
+    icon: SiMongodb,
+    level: 80,
+    category: "Database",
+    color: "#47A248",
+  },
+  {
+    name: "MySQL",
+    icon: SiMysql,
+    level: 80,
+    category: "Database",
+    color: "#4479A1",
+  },
+  {
+    name: "Firebase",
+    icon: SiFirebase,
+    level: 75,
+    category: "Database",
+    color: "#FFCA28",
+  },
+
+  {
+    name: "Git",
+    icon: FaGitAlt,
+    level: 70,
+    category: "Tools",
+    color: "#F05032",
+  },
+  {
+    name: "Docker",
+    icon: FaDocker,
+    level: 55,
+    category: "Tools",
+    color: "#2496ED",
+  },
+];
+
+
+
+export const skills: Skill[] = [
+  // ===========================
+  // Backend
+  // ===========================
+
+  {
+    id: 1,
+    name: "Java",
+    icon: FaJava,
+    color: "#F89820",
+    level: 90,
+    category: "Backend",
+  },
+
+  {
+    id: 2,
+    name: "Spring Boot",
+    icon: SiSpringboot,
+    color: "#6DB33F",
+    level: 85,
+    category: "Backend",
+  },
+
+  {
+    id: 3,
+    name: "Hibernate",
+    icon: SiHibernate,
+    color: "#59666C",
+    level: 85,
+    category: "Backend",
+  },
+
+  {
+    id: 4,
+    name: "Node.js",
+    icon: FaNodeJs,
+    color: "#68A063",
+    level: 70,
+    category: "Backend",
+  },
+
+  // ===========================
+  // Frontend
+  // ===========================
+
+  {
+    id: 5,
+    name: "React",
+    icon: FaReact,
+    color: "#61DAFB",
+    level: 75,
+    category: "Frontend",
+  },
+
+  {
+    id: 6,
+    name: "JavaScript",
+    icon: SiJavascript,
+    color: "#F7DF1E",
+    level: 85,
+    category: "Frontend",
+  },
+
+  {
+    id: 7,
+    name: "TypeScript",
+    icon: SiTypescript,
+    color: "#3178C6",
+    level: 70,
+    category: "Frontend",
+  },
+
+  // ===========================
+  // Mobile
+  // ===========================
+
+  {
+    id: 8,
+    name: "Flutter",
+    icon: SiFlutter,
+    color: "#02569B",
+    level: 85,
+    category: "Mobile",
+  },
+
+  // ===========================
+  // Artificial Intelligence
+  // ===========================
+
+  {
+    id: 9,
+    name: "Python",
+    icon: FaPython,
+    color: "#3776AB",
+    level: 75,
+    category: "AI",
+  },
+
+  {
+    id: 10,
+    name: "OpenCV",
+    icon: SiOpencv,
+    color: "#5C3EE8",
+    level: 70,
+    category: "AI",
+  },
+
+  {
+    id: 11,
+    name: "TensorFlow",
+    icon: SiTensorflow,
+    color: "#FF6F00",
+    level: 70,
+    category: "AI",
+  },
+
+  // ===========================
+  // Database
+  // ===========================
+
+  {
+    id: 12,
+    name: "Oracle",
+    icon: SiPostgresql,
+    color: "#F80000",
+    level: 90,
+    category: "Database",
+  },
+
+  {
+    id: 13,
+    name: "MongoDB",
+    icon: SiMongodb,
+    color: "#47A248",
+    level: 85,
+    category: "Database",
+  },
+
+  {
+    id: 14,
+    name: "MySQL",
+    icon: SiMysql,
+    color: "#4479A1",
+    level: 80,
+    category: "Database",
+  },
+
+  {
+    id: 15,
+    name: "Firebase",
+    icon: SiFirebase,
+    color: "#FFCA28",
+    level: 80,
+    category: "Database",
+  },
+
+  // ===========================
+  // Tools
+  // ===========================
+
+  {
+    id: 16,
+    name: "Git",
+    icon: FaGitAlt,
+    color: "#F05032",
+    level: 75,
+    category: "Tools",
+  },
+
+  {
+    id: 17,
+    name: "Docker",
+    icon: FaDocker,
+    color: "#2496ED",
+    level: 60,
+    category: "Tools",
+  },
+
+  {
+    id: 18,
+    name: "VS Code",
+    icon: SiAndroidstudio,
+    color: "#007ACC",
+    level: 95,
+    category: "Tools",
+  },
+
+  {
+    id: 19,
+    name: "Postman",
+    icon: SiPostman,
+    color: "#FF6C37",
+    level: 95,
+    category: "Tools",
+  },
+];
+// data\social.ts
+import {
+    FaLinkedin,
+    FaFacebook,
+    FaInstagram,
+    FaEnvelope
+} from "react-icons/fa";
+
+export const socials = [
+
+    {
+        name: "LinkedIn",
+        icon: FaLinkedin,
+        url: "https://linkedin.com/in/zitouni-oussama",
+        color: "#0A66C2",
+    },
+
+    {
+        name: "Facebook",
+        icon: FaFacebook,
+        url: "https://facebook.com/",
+        color: "#1877F2",
+    },
+
+    {
+        name: "Instagram",
+        icon: FaInstagram,
+        url: "https://instagram.com/",
+        color: "#E4405F",
+    },
+
+    {
+        name: "Email",
+        icon: FaEnvelope,
+        url: "mailto:zitounioussama2004@gmail.com",
+        color: "#EA4335",
+    },
+
+];
+// data\stats.ts
+import type { IconType } from "react-icons";
+
+import {
+    FaFolderOpen,
+    FaLaptopCode,
+    FaGraduationCap,
+} from "react-icons/fa";
+
+export interface HeroStat {
+    number: string;
+    title: string;
+    icon: IconType;
+}
+
+export const heroStats: HeroStat[] = [
+    {
+        number: "8+",
+        title: "Projects",
+        icon: FaFolderOpen,
+    },
+    {
+        number: "15+",
+        title: "Technologies",
+        icon: FaLaptopCode,
+    },
+    {
+        number: "2026",
+        title: "Master STIC",
+        icon: FaGraduationCap,
+    },
+];
+// index.css
+@import "tailwindcss";
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Inter,sans-serif;
+    background:#0B1120;
+    color:#F8FAFC;
+}
+// main.tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
+import App from "./App";
+
+import "./index.css";
+import "leaflet/dist/leaflet.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
+);
+// pages\Home\Home.tsx
+import MainLayout from "../../components/layouts/MainLayout";
+import Hero from "../../components/sections/Hero";
+import About from "../../components/sections/About";
+import Skills from "../../components/sections/Skills";
+import Projects from "../../components/sections/Projects";
+import Education from "../../components/sections/Education";
+import Experience from "../../components/sections/Experience"
+import Contact from "../../components/sections/Contact";
+
+const Home = () => {
+    return (
+        <MainLayout>
+
+            <Hero />
+
+            <About />
+
+            <Skills />
+
+            <Projects />
+
+            <Education />
+
+            <Experience />
+
+            <Contact />
+            
+        </MainLayout>
+    );
+};
+
+export default Home;
+// pages\NotFound\NotFound.tsx
+const NotFound = () => {
+  return <>404</>;
+};
+
+export default NotFound;
+
+// pages\ProjectDetails\index.ts
+export { default } from "./ProjectDetails";
+// pages\ProjectDetails\ProjectDescription.tsx
+import type { Project } from "../../types/project";
+
+interface Props {
+    project: Project;
+}
+
+const ProjectDescription = ({ project }: Props) => {
+
+    return (
+
+        <div className="mt-16">
+
+            <h2 className="mb-6 text-3xl font-bold text-white">
+
+                About the Project
+
+            </h2>
+
+            <p className="leading-8 text-slate-400">
+
+                {project.longDescription}
+
+            </p>
+
+        </div>
+
+    );
+
+};
+
+export default ProjectDescription;
+// pages\ProjectDetails\ProjectDetails.tsx
+import { useParams, Navigate } from "react-router-dom";
+
+import Container from "../../components/ui/Container";
+
+import { projects } from "../../data/projects";
+
+import ProjectHero from "./ProjectHero";
+import ProjectInfo from "./ProjectInfo";
+import ProjectDescription from "./ProjectDescription";
+import ProjectTechnologies from "./ProjectTechnologies";
+import ProjectFeatures from "./ProjectFeatures";
+import ProjectGallery from "./ProjectGallery";
+
+import { useEffect } from "react";
+
+const ProjectDetails = () => {
+  const { slug } = useParams();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, []);
+
+  const project = projects.find((project) => project.slug === slug);
+
+  if (!project) {
+    return <Navigate to="/404" replace />;
+  }
+
+  return (
+    <main className="min-h-screen bg-slate-950 py-24">
+      <Container>
+        <ProjectHero project={project} />
+
+        <ProjectInfo project={project} />
+
+        <ProjectDescription project={project} />
+
+        <ProjectTechnologies project={project} />
+
+        <ProjectFeatures features={project.features} />
+
+        <ProjectGallery project={project} />
+      </Container>
+    </main>
+  );
+};
+
+export default ProjectDetails;
+
+// pages\ProjectDetails\ProjectFeatures.tsx
+import { motion } from "framer-motion";
+
+interface Props {
+
+    features: string[];
+
+}
+
+const ProjectFeatures = ({ features }: Props) => {
+
+    return (
+
+        <motion.section
+
+            initial={{ opacity: 0 }}
+
+            whileInView={{ opacity: 1 }}
+
+            viewport={{ once: true }}
+
+            transition={{ duration: .7 }}
+
+            className="mt-24"
+
+        >
+
+            <h2 className="mb-10 text-4xl font-bold text-white">
+
+                Features
+
+            </h2>
+
+            <div className="grid gap-6 md:grid-cols-2">
+
+                {
+
+                    features.map((feature) => (
+
+                        <div
+
+                            key={feature}
+
+                            className="
+                                rounded-2xl
+                                border
+                                border-slate-800
+                                bg-slate-900
+                                p-6
+                                text-slate-300
+                            "
+
+                        >
+
+                            ✓ {feature}
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        </motion.section>
+
+    );
+
+};
+
+export default ProjectFeatures;
+// pages\ProjectDetails\ProjectGallery.tsx
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import type { Project } from "../../types/project";
+
+interface Props {
+  project: Project;
+}
+
+const AUTOPLAY_DELAY = 3000;
+
+const ProjectGallery = ({ project }: Props) => {
+  const [current, setCurrent] = useState(0);
+
+  const [pause, setPause] = useState(false);
+
+  const images = project.images.length ? project.images : [project.cover];
+
+  useEffect(() => {
+    if (pause) return;
+
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, AUTOPLAY_DELAY);
+
+    return () => clearInterval(timer);
+  }, [pause, images.length]);
+
+  const previous = () => {
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const next = () => {
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <section className="mt-28">
+      <h2 className="mb-10 text-4xl font-bold text-white">Gallery</h2>
+
+      <div
+        onMouseEnter={() => setPause(true)}
+        onMouseLeave={() => setPause(false)}
+        className="relative"
+      >
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={current}
+            src={images[current]}
+            alt={project.title}
+            initial={{
+              opacity: 0,
+              scale: 1.05,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.2,
+            }}
+            className="
+                            h-[650px]
+                            w-full
+                            rounded-3xl
+                            object-cover
+                            border
+                            border-slate-800
+                        "
+          />
+        </AnimatePresence>
+
+        <button
+          onClick={previous}
+          className="
+                        absolute
+                        left-5
+                        top-1/2
+                        -translate-y-1/2
+                        rounded-full
+                        bg-slate-900/80
+                        p-3
+                        text-white
+                        transition
+                        hover:bg-blue-600
+                    "
+        >
+          <ChevronLeft size={28} />
+        </button>
+
+        <button
+          onClick={next}
+          className="
+                        absolute
+                        right-5
+                        top-1/2
+                        -translate-y-1/2
+                        rounded-full
+                        bg-slate-900/80
+                        p-3
+                        text-white
+                        transition
+                        hover:bg-blue-600
+                    "
+        >
+          <ChevronRight size={28} />
+        </button>
+      </div>
+
+      <div className="mt-8 flex justify-center gap-3">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`
+
+                                h-3
+                                rounded-full
+                                transition-all
+                                duration-300
+
+                                ${
+                                  current === index
+                                    ? "w-10 bg-blue-500"
+                                    : "w-3 bg-slate-600"
+                                }
+
+                            `}
+          />
+        ))}
+      </div>
+
+      <div className="mt-8 flex flex-wrap justify-center gap-4">
+        {images.map((image, index) => (
+          <motion.img
+            key={index}
+            src={image}
+            alt={`Thumbnail ${index + 1}`}
+            onClick={() => setCurrent(index)}
+            whileHover={{
+              scale: 1.1,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            className={`
+
+                    h-14
+                    w-20
+                    cursor-pointer
+                    rounded-lg
+                    object-cover
+                    border-2
+                    shadow-lg
+                    transition-all
+                    duration-300
+
+                    ${
+                      current === index
+                        ? "border-blue-500 opacity-100 scale-105"
+                        : "border-slate-700 opacity-60 hover:opacity-100"
+                    }
+
+                `}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default ProjectGallery;
+
+// pages\ProjectDetails\ProjectHero.tsx
+import { motion } from "framer-motion";
+import type { Project } from "../../types/project";
+
+interface Props {
+    project: Project;
+}
+
+const ProjectHero = ({ project }: Props) => {
+
+    return (
+
+        <motion.div
+
+            initial={{ opacity: 0 }}
+
+            animate={{ opacity: 1 }}
+
+            transition={{ duration: .8 }}
+
+            className="relative overflow-hidden rounded-3xl"
+
+        >
+
+            <img
+
+                src={project.cover}
+
+                alt={project.title}
+
+                className="h-[500px] w-full object-cover"
+
+            />
+
+            <div
+                className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-slate-950
+                    via-slate-950/40
+                    to-transparent
+                "
+            />
+
+            <div className="absolute bottom-10 left-10">
+
+                <h1 className="text-5xl font-bold text-white">
+
+                    {project.title}
+
+                </h1>
+
+                <p className="mt-3 text-xl text-blue-400">
+
+                    {project.subtitle}
+
+                </p>
+
+            </div>
+
+        </motion.div>
+
+    );
+
+};
+
+export default ProjectHero;
+// pages\ProjectDetails\ProjectInfo.tsx
+import type { Project } from "../../types/project";
+
+interface Props {
+    project: Project;
+}
+
+const ProjectInfo = ({ project }: Props) => {
+
+    const infos = [
+
+        {
+            title: "Role",
+            value: project.role
+        },
+
+        {
+            title: "Duration",
+            value: project.duration
+        },
+
+        {
+            title: "Category",
+            value: project.category
+        }
+
+    ];
+
+    return (
+
+        <section className="mt-20">
+
+            <div className="grid gap-6 md:grid-cols-3">
+
+                {
+
+                    infos.map((item) => (
+
+                        <div
+
+                            key={item.title}
+
+                            className="
+                                rounded-2xl
+                                border
+                                border-slate-800
+                                bg-slate-900
+                                p-8
+                            "
+
+                        >
+
+                            <h3 className="text-sm uppercase tracking-widest text-slate-500">
+
+                                {item.title}
+
+                            </h3>
+
+                            <p className="mt-4 text-xl font-semibold text-white">
+
+                                {item.value}
+
+                            </p>
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        </section>
+
+    );
+
+};
+
+export default ProjectInfo;
+// pages\ProjectDetails\ProjectNavigation.tsx
+
+// pages\ProjectDetails\ProjectTechnologies.tsx
+import { motion } from "framer-motion";
+
+import type { Project } from "../../types/project";
+
+interface Props {
+
+    project: Project;
+
+}
+
+const ProjectTechnologies = ({ project }: Props) => {
+
+    return (
+
+        <motion.section
+
+            initial={{ opacity: 0 }}
+
+            whileInView={{ opacity: 1 }}
+
+            viewport={{ once: true }}
+
+            transition={{ duration: .7 }}
+
+            className="mt-24"
+
+        >
+
+            <h2 className="mb-10 text-4xl font-bold text-white">
+
+                Technologies
+
+            </h2>
+
+            <div className="flex flex-wrap gap-4">
+
+                {
+
+                    project.technologies.map((tech) => (
+
+                        <div
+
+                            key={tech.name}
+
+                            style={{
+                                borderColor: tech.color,
+                                color: tech.color
+                            }}
+
+                            className="
+                                rounded-full
+                                border
+                                px-6
+                                py-3
+                                font-medium
+                            "
+
+                        >
+
+                            {tech.name}
+
+                        </div>
+
+                    ))
+
+                }
+
+            </div>
+
+        </motion.section>
+
+    );
+
+};
+
+export default ProjectTechnologies;
+// types\common.ts
+
+// types\education.ts
+export interface Education {
+
+    id:number;
+
+    degree:string;
+
+    school:string;
+
+    location:string;
+
+    start:string;
+
+    end:string;
+
+    description:string;
+
+    grade?:string;
+
+}
+// types\experience.ts
+import type { ProjectTech } from "./project";
+
+export interface Experience {
+
+    id:number;
+
+    company:string;
+
+    role:string;
+
+    start:string;
+
+    end:string;
+
+    location:string;
+
+    description:string;
+
+    technologies:ProjectTech[];
+
+    projectSlug?:string;
+
+}
+// types\project.ts
+export interface ProjectTech {
+    name: string;
+    color: string;
+}
+
+export interface Project {
+
+    id: number;
+
+    slug: string;
+
+    title: string;
+
+    subtitle: string;
+
+    description: string;
+
+    longDescription: string;
+
+    cover: string;
+
+    images: string[];
+
+    technologies: ProjectTech[];
+
+    features: string[];
+
+    role: string;
+
+    duration: string;
+
+    categories: string[];
+
+    featured: boolean;
+
+}
+// types\skills.ts
+import type { IconType } from "react-icons";
+
+export interface Skills {
+  name: string;
+  icon: IconType;
+  level: number;
+  category:
+    | "Backend"
+    | "Frontend"
+    | "Mobile"
+    | "AI"
+    | "Database"
+    | "Tools";
+  color: string;
+}
+
+
+export interface Skill {
+
+    id:number;
+
+    name:string;
+
+    icon:IconType;
+
+    color:string;
+
+    level:number;
+
+    category:
+        |"Backend"
+        |"Frontend"
+        |"Mobile"
+        |"AI"
+        |"Database"
+        |"Tools";
+
+}
+// utils\cn.ts
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+}
+// utils\constants.ts
+
+// utils\Skill.ts
+import { skills } from "../data/skills";
+
+export const getSkillsByCategory = (category: string) =>
+  skills.filter((skill) => skill.category === category);
