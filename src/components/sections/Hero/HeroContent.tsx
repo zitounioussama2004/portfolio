@@ -17,7 +17,7 @@ const HeroContent = () => {
 
             <Badge>
 
-                🟢 Available for Work
+                🟢 Available for Works 2026
 
             </Badge>
 
