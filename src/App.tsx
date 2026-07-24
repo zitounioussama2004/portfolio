@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import NotFound from "./pages/NotFound/NotFound";
-import Cursor from "./components/ui/Cursor";
 
 
 const App = () => {
@@ -27,7 +26,6 @@ const App = () => {
 
     "
     >
-      <Cursor />
       <Routes>
         {/* Home */}
 
