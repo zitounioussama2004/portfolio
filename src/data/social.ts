@@ -31,7 +31,7 @@ export const socials = [
     {
         name: "Email",
         icon: FaEnvelope,
-        url: "mailto:zitounioussama2004@gmail.com",
+        url: "zitounioussama2004@gmail.com",
         color: "#EA4335",
     },
 
