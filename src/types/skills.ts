@@ -17,8 +17,9 @@ export interface Skill {
         |"Backend"
         |"Frontend"
         |"Mobile"
-        |"AI"
+        |"Artificial Intelligence"
         |"Database"
-        |"Tools";
+        |"Tools"
+        |"Development Tools";
 
 }
