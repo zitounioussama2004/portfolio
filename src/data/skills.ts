@@ -99,7 +99,7 @@ export const skills: Skill[] = [
   },
 
   {
-    id: 7,
+    id: 8,
     name: "HTML",
     icon: SiHtml5,
     color: "#494100",
@@ -108,7 +108,7 @@ export const skills: Skill[] = [
   },
 
   {
-    id: 7,
+    id: 9,
     name: "CSS",
     icon: SiCss,
     color: "#1ef74d",
