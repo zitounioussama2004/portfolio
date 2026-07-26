@@ -7,55 +7,50 @@ const About = () => {
 
     return (
 
-        <section
-            id="about"
-            className="py-32"
+       <section>
+
+    <Container>
+
+        <div
+            className="
+                grid
+                gap-16
+                lg:grid-cols-3
+            "
         >
 
-            <Container>
+            {/* Desktop : gauche */}
+            {/* Mobile : troisième */}
 
-                <div
-                    className="
-                        grid
-                        grid-cols-1
-                        items-center
-                        gap-20
+            <div
+                className="
+                    order-3
+                    lg:order-1
+                    flex
+                    justify-center
+                "
+            >
+                <AboutImage />
+            </div>
 
-                        lg:grid-cols-3
-                    "
-                >
+            {/* Desktop : droite */}
+            {/* Mobile : premier */}
 
-                    {/* Photo : 1/3 */}
+            <div
+                className="
+                    order-1
+                    lg:order-2
+                    lg:col-span-2
+                "
+            >
+                <AboutContent />
+            </div>
 
-                    <div
-                        className="
-                            flex
-                            justify-center
-                            lg:justify-start
-                        "
-                    >
+        </div>
 
-                        <AboutImage />
+    </Container>
 
-                    </div>
-
-                    {/* Informations : 2/3 */}
-
-                    <div
-                        className="
-                            lg:col-span-2
-                        "
-                    >
-
-                        <AboutContent />
-
-                    </div>
-
-                </div>
-
-            </Container>
-
-        </section>
+</section>
 
     );
 
