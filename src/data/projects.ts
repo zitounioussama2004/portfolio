@@ -155,13 +155,13 @@ export const projects: Project[] = [
 
         title: "Achrili Quick Shop",
 
-        subtitle: "E-Commerce Mobile Application",
+        subtitle: "Modern Mobile E-Commerce Platform",
 
         description:
-            "Online shopping application inspired by Alibaba and Shein.",
+            "A full-featured mobile e-commerce application inspired by Alibaba and Shein, providing a modern shopping experience for customers and sellers.",
 
         longDescription:
-            "Mobile e-commerce application allowing customers to browse products, place orders, manage shopping carts and securely authenticate.",
+            "Achrili Quick Shop is a modern mobile e-commerce application developed to simplify online shopping. The application enables users to browse products, search by category, manage their shopping cart, place orders, and securely authenticate. Built with Flutter and PHP, the project focuses on delivering a fast, responsive, and user-friendly shopping experience while integrating a robust backend with MySQL for efficient product and order management.",
 
         cover: achriliCover,
 
@@ -190,33 +190,52 @@ export const projects: Project[] = [
         ],
 
         featured: true,
+
         role: "Full Stack Mobile Developer",
 
         duration: "2025",
 
         categories: [
-            "AI",
-            "Mobile",
-            "Full Stack"
+
+            "Mobile Development",
+
+            "E-Commerce",
+
+            "Full Stack",
+
+            "Database"
+
         ],
 
         features: [
 
-            "Authentication",
+            "User Authentication",
+
+            "Product Catalog",
+
+            "Product Categories",
+
+            "Advanced Search",
+
+            "Product Details",
 
             "Shopping Cart",
 
-            "Orders",
+            "Wishlist",
 
-            "Payment",
+            "Order Management",
 
-            "Categories",
+            "Order History",
 
-            "Search",
+            "Secure Checkout",
 
-            "Favorites",
+            "User Profile",
 
-            "Profile"
+            "Responsive Mobile Interface",
+
+            "MySQL Database",
+
+            "PHP REST API"
 
         ],
 
