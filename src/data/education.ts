@@ -1,69 +1,68 @@
 import type { Education } from "../types/education";
 
-export const education:Education[]=[
-{
+export const education: Education[] = [
 
-id:1,
+    {
 
-degree:"Baccalauréat - Sciences Expérimentales",
+        id: 1,
 
-school:"Lycée",
+        degree: "Baccalauréat – Experimental Sciences",
 
-location:"Bordj Bou Arréridj",
+        school: "High School",
 
-start:"2020",
+        location: "Bordj Bou Arréridj, Algeria",
 
-end:"2021",
+        start: "2020",
 
-grade:"Mention Bien",
+        end: "2021",
 
-description:
-"Graduated with honors and developed a strong interest in computer science and technology."
+        grade: "14.73 / 20 • Mention Bien",
 
-},
+        description:
+            "Graduated with honors in the Experimental Sciences stream, achieving a final average of 14.73/20. This academic achievement strengthened my analytical thinking and sparked my passion for computer science and software engineering."
 
-{
+    },
 
-id:2,
+    {
 
-degree:"Licence en Informatique",
+        id: 2,
 
-school:"Université Constantine 2 Abdelhamid Mehri",
+        degree: "Bachelor's Degree in Computer Science",
 
-location:"Constantine, Algeria",
+        school: "University Constantine 2 Abdelhamid Mehri",
 
-start:"2021",
+        location: "Constantine, Algeria",
 
-end:"2024",
+        start: "2021",
 
-grade:"Licence",
+        end: "2024",
 
-description:
-"Fundamental studies in computer science including algorithms, databases, operating systems and object-oriented programming."
+        grade: "15.00 / 20",
 
-},
+        description:
+            "Completed a Bachelor's degree in Computer Science with an overall average of 15.00/20. Built strong foundations in algorithms, data structures, object-oriented programming, databases, operating systems, software engineering, and web technologies while developing several academic software projects."
 
-{
+    },
 
-id:3,
+    {
 
-degree:"Master 2 - Sciences et Technologies de l'Information et de la Communication",
+        id: 3,
 
-school:"Université Constantine 2 Abdelhamid Mehri",
+        degree: "Master's Degree in Information and Communication Science and Technology (STIC)",
 
-location:"Constantine, Algeria",
+        school: "University Constantine 2 Abdelhamid Mehri",
 
-start:"2025",
+        location: "Constantine, Algeria",
 
-end:"2026",
+        start: "2024",
 
-grade:"Master",
+        end: "2026",
 
-description:
-"Specialization in software engineering, web development, artificial intelligence and modern information systems."
+        grade: "Master's Thesis: 18.00 / 20",
 
-}
+        description:
+            "Specialized in Software Engineering, Artificial Intelligence, Web Development, Mobile Development, and Intelligent Information Systems. Successfully defended my Master's thesis with a grade of 18.00/20, demonstrating advanced technical, analytical, and research skills through the design and development of an innovative software solution."
 
-
+    }
 
 ];
