@@ -35,13 +35,13 @@ export const projects: Project[] = [
 
         title: "VALORIX",
 
-        subtitle: "Smart Waste Management Platform",
+        subtitle: "AI-Powered Smart Waste Management Platform",
 
         description:
-            "AI-powered platform for waste collection and recycling in Algeria.",
+            "An intelligent platform that digitizes waste collection and recycling through Artificial Intelligence, mobile technologies, and modern web applications.",
 
         longDescription:
-            "VALORIX is an intelligent digital platform developed to modernize waste collection and recycling in Algeria. It connects citizens, collectors and administrators while integrating artificial intelligence for automatic waste classification.",
+            "VALORIX is an AI-powered Smart Waste Management Platform developed as my Master's graduation project. The platform modernizes waste collection and recycling by connecting citizens, collectors, sellers, workers, and administrators through a complete digital ecosystem. It integrates Artificial Intelligence for automatic waste classification, geolocation, collection management, reward points, digital wallet, notifications, and an administrative dashboard. The project was entirely designed and developed by myself, covering software architecture, backend, mobile application, database design, REST APIs, and AI integration.",
 
         cover: valorixCover,
 
@@ -70,8 +70,18 @@ export const projects: Project[] = [
             },
 
             {
-                name: "Oracle",
+                name: "JPA",
+                color: "#6DB33F"
+            },
+
+            {
+                name: "Oracle Database",
                 color: "#F80000"
+            },
+
+            {
+                name: "Android",
+                color: "#3DDC84"
             },
 
             {
@@ -82,49 +92,61 @@ export const projects: Project[] = [
             {
                 name: "OpenCV",
                 color: "#5C3EE8"
-            },
-
-            {
-                name: "Oracle DataBase",
-                color:"#0bdaff"
             }
 
         ],
 
         featured: true,
 
-        role: "Full Stack & AI Developer",
+        role: "Software Engineer • Full Stack Developer • AI Developer",
 
-        duration: "2025 - 2026",
+        duration: "2025 – 2026",
 
         categories: [
-            "AI",
-            "Mobile",
-            "Full Stack",
-            "Web"
+            "Artificial Intelligence",
+            "Software Engineering",
+            "Mobile Development",
+            "Web Development",
+            "Full Stack"
         ],
 
         features: [
 
-            "AI Waste Classification",
+            "AI-powered Waste Classification",
 
-            "Collection Requests",
+            "Citizen & Collector Management",
 
-            "Collector Dashboard",
+            "Secure Authentication & Authorization",
 
-            "Reward System",
+            "RESTful API",
 
-            "Wallet",
+            "Interactive Admin Dashboard",
 
-            "Notifications",
+            "Collection Request Management",
 
-            "Admin Dashboard",
+            "Real-Time Notifications",
 
-            "Authentication"
+            "Digital Wallet",
+
+            "Reward Points System",
+
+            "Waste Selling Marketplace",
+
+            "Location & Mapping",
+
+            "Role-Based Access Control",
+
+            "Oracle Database Integration",
+
+            "Android Mobile Application",
+
+            "Spring Boot Backend",
+
+            "Automatic Waste Recognition"
 
         ],
 
-    },
+    }
 
     {
         id: 2,
