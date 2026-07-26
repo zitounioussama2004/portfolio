@@ -193,7 +193,7 @@ export const projects: Project[] = [
 
         role: "Full Stack Mobile Developer",
 
-        duration: "2025",
+        duration: "2024 (4 months)",
 
         categories: [
 
