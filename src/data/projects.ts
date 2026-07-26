@@ -81,6 +81,11 @@ export const projects: Project[] = [
             {
                 name: "OpenCV",
                 color: "#5C3EE8"
+            },
+
+            {
+                name: "Oracle DataBase",
+                color:"#0bdaff"
             }
 
         ],
