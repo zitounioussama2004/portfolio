@@ -10,33 +10,19 @@ import { heroData } from "../../../data/hero";
 import { TypeAnimation } from "react-type-animation";
 
 const HeroContent = () => {
+  return (
+    <div>
+      <Badge>🟢 Available for Work</Badge>
 
-    return (
+      <p className="mt-8 text-xl text-slate-700 dark:text-slate-300">
+        Hello, I'm
+      </p>
 
-        <div>
+      <h1 className="mt-2 text-5xl font-black leading-tight lg:text-7xl">
+        <span className="block">{heroData.firstName}</span>
 
-            <Badge>
-
-                🟢 Available for Work
-
-            </Badge>
-
-            <p className="mt-8 text-xl text-slate-700 dark:text-slate-300">
-
-                Hello, I'm
-
-            </p>
-
-            <h1 className="mt-2 text-5xl font-black leading-tight lg:text-7xl">
-
-                <span className="block">
-
-                    {heroData.firstName}
-
-                </span>
-
-                <span
-                    className="
+        <span
+          className="
                         mt-2
                         block
                         bg-gradient-to-r
@@ -46,49 +32,54 @@ const HeroContent = () => {
                         bg-clip-text
                         text-transparent
                     "
-                >
+        >
+          {heroData.lastName}
+        </span>
+      </h1>
 
-                    {heroData.lastName}
+      <TypeAnimation
+        sequence={[
+          "Software Engineer",
+          1800,
 
-                </span>
+          "Full Stack Developer",
+          1800,
 
-            </h1>
+          "Java & Spring Boot Expert",
+          1800,
 
-            <TypeAnimation
+          "React & TypeScript Developer",
+          1800,
 
-                sequence={[
+          "Mobile App Developer",
+          1800,
 
-                    "Software Engineer",
-                    2000,
+          "AI Engineer",
+          1800,
 
-                    "Full Stack Developer",
-                    2000,
+          "Problem Solver",
+          1800,
 
-                    "AI Engineer",
-                    2000,
+          "Building Digital Solutions",
+          1800,
 
-                    "Java Developer",
-                    2000,
-
-                ]}
-
-                wrapper="h2"
-
-                speed={70}
-
-                repeat={Infinity}
-
-                className="
+          "Turning Ideas into Reality",
+          1800,
+        ]}
+        
+        wrapper="h2"
+        speed={70}
+        repeat={Infinity}
+        className="
                     mt-8
                     text-3xl
                     font-bold
                     text-blue-500
                 "
+      />
 
-            />
-
-            <p
-                className="
+      <p
+        className="
                     mt-8
                     max-w-2xl
                     text-lg
@@ -96,32 +87,27 @@ const HeroContent = () => {
                     text-slate-600
                     dark:text-slate-400
                 "
-            >
+      >
+        {heroData.description}
+      </p>
 
-                {heroData.description}
+      {/* Buttons */}
 
-            </p>
+      <HeroButtons />
 
-            {/* Buttons */}
+      {/* Stats */}
 
-            <HeroButtons />
+      <HeroStats />
 
-            {/* Stats */}
+      {/* Technologies */}
 
-            <HeroStats />
+      <HeroTech />
 
-            {/* Technologies */}
+      {/* Social */}
 
-            <HeroTech />
-
-            {/* Social */}
-
-            <HeroSocial />
-
-        </div>
-
-    );
-
+      <HeroSocial />
+    </div>
+  );
 };
 
 export default HeroContent;
