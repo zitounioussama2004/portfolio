@@ -21,7 +21,9 @@ import {
   SiJavascript,
   SiPostman,
   SiAndroidstudio,
-  SiXml
+  SiXml,
+  SiHtml5,
+  SiCss
 } from "react-icons/si";
 
 export const skills: Skill[] = [
@@ -79,7 +81,7 @@ export const skills: Skill[] = [
   // ===========================
 
   {
-    id: 5,
+    id: 6,
     name: "React",
     icon: FaReact,
     color: "#61DAFB",
@@ -88,13 +90,32 @@ export const skills: Skill[] = [
   },
 
   {
-    id: 6,
+    id: 7,
     name: "JavaScript",
     icon: SiJavascript,
     color: "#F7DF1E",
     level: 85,
     category: "Frontend",
   },
+
+  {
+    id: 7,
+    name: "HTML",
+    icon: SiHtml5,
+    color: "#494100",
+    level: 85,
+    category: "Frontend",
+  },
+
+  {
+    id: 7,
+    name: "CSS",
+    icon: SiCss,
+    color: "#1ef74d",
+    level: 85,
+    category: "Frontend",
+  },
+
 
   // ===========================
   // Mobile
