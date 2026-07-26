@@ -4,9 +4,7 @@ import {
   FaJava,
   FaReact,
   FaPython,
-  FaGitAlt,
   FaNodeJs,
-  FaDocker,
 } from "react-icons/fa";
 
 import {
@@ -184,24 +182,6 @@ export const skills: Skill[] = [
   // ===========================
   // Tools
   // ===========================
-
-  {
-    id: 16,
-    name: "Git",
-    icon: FaGitAlt,
-    color: "#F05032",
-    level: 75,
-    category: "Tools",
-  },
-
-  {
-    id: 17,
-    name: "Docker",
-    icon: FaDocker,
-    color: "#2496ED",
-    level: 60,
-    category: "Tools",
-  },
 
   {
     id: 18,
