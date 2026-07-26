@@ -46,6 +46,7 @@ export const projects: Project[] = [
         cover: valorixCover,
 
         images: [
+            valorixCover,
             valorix1,
             valorix2,
             valorix3
