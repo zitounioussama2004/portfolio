@@ -146,7 +146,7 @@ export const projects: Project[] = [
 
         ],
 
-    }
+    },
 
     {
         id: 2,
