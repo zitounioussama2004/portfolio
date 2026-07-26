@@ -330,11 +330,11 @@ export const projects: Project[] = [
 
         role: "Full Stack Developer",
 
-        duration: "2024",
+        duration: "3 weeks",
 
         categories: [
             "Web",
-            "React"
+            "Java"
         ],
 
         features: [
