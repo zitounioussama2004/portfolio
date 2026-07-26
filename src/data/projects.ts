@@ -33,7 +33,7 @@ export const projects: Project[] = [
 
         slug: "valorix",
 
-        title: "VALORIX 2026",
+        title: "VALORIX",
 
         subtitle: "Smart Waste Management Platform",
 

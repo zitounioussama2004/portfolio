@@ -72,7 +72,7 @@ export const heroSkills: Skills[] = [
   },
 
   {
-    name: "Flutter",
+    name: "Flutterr",
     icon: SiFlutter,
     level: 85,
     category: "Mobile",
