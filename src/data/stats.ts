@@ -28,4 +28,9 @@ export const heroStats: HeroStat[] = [
         title: "Master STIC",
         icon: FaGraduationCap,
     },
+    {
+        number: "2024",
+        title: "License TI",
+        icon: FaGraduationCap,
+    },
 ];
