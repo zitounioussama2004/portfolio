@@ -5,6 +5,7 @@ import {
   FaReact,
   FaPython,
   FaNodeJs,
+  FaPhp,
 } from "react-icons/fa";
 
 import {
@@ -62,6 +63,15 @@ export const skills: Skill[] = [
     color: "#68A063",
     level: 70,
     category: "Backend",
+  },
+
+  {
+    id: 5,
+    name: "PHP",
+    icon: FaPhp,
+    color: "#39e047",
+    level: 85,
+    category: "Backend"
   },
 
   // ===========================
