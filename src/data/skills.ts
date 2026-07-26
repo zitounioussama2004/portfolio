@@ -22,7 +22,8 @@ import {
   SiJavascript,
   SiTypescript,
   SiPostman,
-  SiAndroidstudio
+  SiAndroidstudio,
+  SiXml
 } from "react-icons/si";
 
 export const heroSkills: Skills[] = [
@@ -69,13 +70,6 @@ export const heroSkills: Skills[] = [
     category: "Frontend",
     color: "#F7DF1E",
   },
-  {
-    name: "TypeScript",
-    icon: SiTypescript,
-    level: 70,
-    category: "Frontend",
-    color: "#3178C6",
-  },
 
   {
     name: "Flutter",
@@ -83,6 +77,13 @@ export const heroSkills: Skills[] = [
     level: 85,
     category: "Mobile",
     color: "#02569B",
+  },
+  {
+    name: "XML",
+    icon: SiXml,
+    level: 85,
+    category: "Mobile",
+    color: "#ff0000"
   },
 
   {

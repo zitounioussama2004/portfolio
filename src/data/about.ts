@@ -10,22 +10,24 @@ export const aboutData = {
 
     description: `
 
-Software Engineer graduated with a Master's degree in STIC.
+        Software Engineer graduated with a Master's degree in STIC.
 
-Passionate about Software Engineering,
-Artificial Intelligence,
-Web Development,
-Mobile Development
-and problem solving.
+        Passionate about Software Engineering,
+        Artificial Intelligence,
+        Web Development,
+        Mobile Development
+        and problem solving.
 
-I enjoy building scalable applications
-using modern technologies.
+        I enjoy building scalable applications
+        using modern technologies.
 
-`,
+        `,
 
     highlights: [
 
         "Master STIC",
+
+        "License IT",
 
         "Java",
 
@@ -36,7 +38,6 @@ using modern technologies.
         "Flutter",
 
         "Artificial Intelligence",
-
     ]
 
 };
