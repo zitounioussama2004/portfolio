@@ -14,11 +14,42 @@ const About = () => {
 
             <Container>
 
-                <div className="grid lg:grid-cols-2 gap-20 items-center">
+                <div
+                    className="
+                        grid
+                        grid-cols-1
+                        items-center
+                        gap-20
 
-                    <AboutImage />
+                        lg:grid-cols-3
+                    "
+                >
 
-                    <AboutContent />
+                    {/* Photo : 1/3 */}
+
+                    <div
+                        className="
+                            flex
+                            justify-center
+                            lg:justify-start
+                        "
+                    >
+
+                        <AboutImage />
+
+                    </div>
+
+                    {/* Informations : 2/3 */}
+
+                    <div
+                        className="
+                            lg:col-span-2
+                        "
+                    >
+
+                        <AboutContent />
+
+                    </div>
 
                 </div>
 
