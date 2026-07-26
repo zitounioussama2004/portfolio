@@ -1,10 +1,10 @@
-import { heroSkills } from "../../../data/skills";
+import { skills } from "../../../data/skills";
 
 const HeroTech = () => {
     return (
         <div className="mt-12 flex flex-wrap gap-4">
 
-            {heroSkills.map((skill) => {
+            {skills.map((skill) => {
 
                 const Icon = skill.icon;
 

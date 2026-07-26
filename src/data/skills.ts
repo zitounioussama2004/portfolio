@@ -1,4 +1,4 @@
-import type { Skills, Skill } from "../types/skills";
+import type { Skill } from "../types/skills";
 
 import {
   FaJava,
@@ -25,135 +25,6 @@ import {
   SiAndroidstudio,
   SiXml
 } from "react-icons/si";
-
-export const heroSkills: Skills[] = [
-  {
-    name: "Java",
-    icon: FaJava,
-    level: 90,
-    category: "Backend",
-    color: "#F89820",
-  },
-  {
-    name: "Spring Boot",
-    icon: SiSpringboot,
-    level: 85,
-    category: "Backend",
-    color: "#6DB33F",
-  },
-  {
-    name: "Hibernate",
-    icon: SiHibernate,
-    level: 85,
-    category: "Backend",
-    color: "#59666C",
-  },
-  {
-    name: "Node.js",
-    icon: FaNodeJs,
-    level: 70,
-    category: "Backend",
-    color: "#339933",
-  },
-
-  {
-    name: "React",
-    icon: FaReact,
-    level: 75,
-    category: "Frontend",
-    color: "#61DAFB",
-  },
-  {
-    name: "JavaScript",
-    icon: SiJavascript,
-    level: 80,
-    category: "Frontend",
-    color: "#F7DF1E",
-  },
-
-  {
-    name: "Flutterr",
-    icon: SiFlutter,
-    level: 85,
-    category: "Mobile",
-    color: "#02569B",
-  },
-  {
-    name: "XML",
-    icon: SiXml,
-    level: 85,
-    category: "Mobile",
-    color: "#ff0000"
-  },
-
-  {
-    name: "Python",
-    icon: FaPython,
-    level: 70,
-    category: "AI",
-    color: "#3776AB",
-  },
-  {
-    name: "TensorFlow",
-    icon: SiTensorflow,
-    level: 60,
-    category: "AI",
-    color: "#FF6F00",
-  },
-  {
-    name: "OpenCV",
-    icon: SiOpencv,
-    level: 65,
-    category: "AI",
-    color: "#5C3EE8",
-  },
-
-  {
-    name: "Oracle",
-    icon: SiPostgresql,
-    level: 85,
-    category: "Database",
-    color: "#F80000",
-  },
-  {
-    name: "MongoDB",
-    icon: SiMongodb,
-    level: 80,
-    category: "Database",
-    color: "#47A248",
-  },
-  {
-    name: "MySQL",
-    icon: SiMysql,
-    level: 80,
-    category: "Database",
-    color: "#4479A1",
-  },
-  {
-    name: "Firebase",
-    icon: SiFirebase,
-    level: 75,
-    category: "Database",
-    color: "#FFCA28",
-  },
-
-  {
-    name: "Git",
-    icon: FaGitAlt,
-    level: 70,
-    category: "Tools",
-    color: "#F05032",
-  },
-  {
-    name: "Docker",
-    icon: FaDocker,
-    level: 55,
-    category: "Tools",
-    color: "#2496ED",
-  },
-];
-
-
 
 export const skills: Skill[] = [
   // ===========================
@@ -218,26 +89,26 @@ export const skills: Skill[] = [
     category: "Frontend",
   },
 
-  {
-    id: 7,
-    name: "TypeScript",
-    icon: SiTypescript,
-    color: "#3178C6",
-    level: 70,
-    category: "Frontend",
-  },
-
   // ===========================
   // Mobile
   // ===========================
 
   {
-    id: 8,
+    id: 7,
     name: "Flutter",
     icon: SiFlutter,
     color: "#02569B",
     level: 85,
     category: "Mobile",
+  },
+
+  {
+    id: 8,
+    name: "XML",
+    icon: SiXml,
+    color: "#ec0202",
+    level:85,
+    category: "Mobile"
   },
 
   // ===========================
