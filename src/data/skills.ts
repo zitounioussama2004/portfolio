@@ -20,7 +20,6 @@ import {
   SiTensorflow,
   SiOpencv,
   SiJavascript,
-  SiTypescript,
   SiPostman,
   SiAndroidstudio,
   SiXml
