@@ -11,7 +11,7 @@ import type { Experience } from "../../../types/experience";
 
 import ExperienceDot from "./ExperienceDot";
 import ExperienceTags from "./ExperienceTags";
-import ExperienceButton from "./ExperienceButton";
+
 
 interface Props {
     experience: Experience;
@@ -252,14 +252,6 @@ const ExperienceCard = ({ experience, index }: Props) => {
                 <ExperienceTags
 
                     technologies={experience.technologies}
-
-                />
-
-                {/* BUTTON */}
-
-                <ExperienceButton
-
-                    slug={experience.projectSlug}
 
                 />
 
