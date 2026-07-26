@@ -19,7 +19,6 @@ export interface Skill {
         |"Mobile"
         |"Artificial Intelligence"
         |"Database"
-        |"Tools"
         |"Development Tools";
 
 }

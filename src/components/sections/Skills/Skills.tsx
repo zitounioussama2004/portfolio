@@ -28,11 +28,11 @@ const Skills = () => {
 
                 <SkillCategory category="Mobile"/>
 
-                <SkillCategory category="AI"/>
+                <SkillCategory category="Artificial Intelligence"/>
 
                 <SkillCategory category="Database"/>
 
-                <SkillCategory category="Tools"/>
+                <SkillCategory category="Development Tools"/>
 
             </Container>
 
