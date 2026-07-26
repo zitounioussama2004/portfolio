@@ -7,50 +7,60 @@ const About = () => {
 
     return (
 
-       <section>
-
-    <Container>
-
-        <div
-            className="
-                grid
-                gap-16
-                lg:grid-cols-3
-            "
+        <section
+            id="about"
+            className="py-32"
         >
 
-            {/* Desktop : gauche */}
-            {/* Mobile : troisième */}
+            <Container>
 
-            <div
-                className="
-                    order-3
-                    lg:order-1
-                    flex
-                    justify-center
-                "
-            >
-                <AboutImage />
-            </div>
+                <div
+                    className="
+                        grid
+                        grid-cols-1
+                        gap-16
 
-            {/* Desktop : droite */}
-            {/* Mobile : premier */}
+                        lg:grid-cols-3
+                        lg:items-center
+                    "
+                >
 
-            <div
-                className="
-                    order-1
-                    lg:order-2
-                    lg:col-span-2
-                "
-            >
-                <AboutContent />
-            </div>
+                    {/* Informations */}
 
-        </div>
+                    <div
+                        className="
+                            order-1
+                            lg:order-2
+                            lg:col-span-2
+                        "
+                    >
 
-    </Container>
+                        <AboutContent />
 
-</section>
+                    </div>
+
+                    {/* Photo */}
+
+                    <div
+                        className="
+                            order-2
+                            lg:order-1
+
+                            flex
+                            justify-center
+                            lg:justify-start
+                        "
+                    >
+
+                        <AboutImage />
+
+                    </div>
+
+                </div>
+
+            </Container>
+
+        </section>
 
     );
 
