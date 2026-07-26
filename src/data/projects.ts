@@ -31,7 +31,7 @@ export const projects: Project[] = [
     {
         id: 1,
 
-        slug: "valorix",
+        slug: "valorix2026",
 
         title: "VALORIX",
 
