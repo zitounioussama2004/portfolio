@@ -515,13 +515,9 @@ export const projects: Project[] = [
         longDescription:
             "Tic Tac Toe Mobile is a modern Flutter application that reimagines the classic Tic Tac Toe game with an intuitive user interface and engaging gameplay. Players can compete against friends locally or challenge an intelligent AI with different difficulty levels. The application includes score tracking, game history, customizable themes, smooth animations, and responsive layouts optimized for Android devices.",
 
-        cover: tictactoeMobileCover,
+        cover: tictactoeCover,
 
-        images: [
-            tictactoeMobile1,
-            tictactoeMobile2,
-            tictactoeMobile3
-        ],
+        images: [],
 
         technologies: [
 
