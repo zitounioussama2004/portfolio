@@ -25,7 +25,7 @@ import restaurantCover from "../assets/images/restaurant/cover.png";
 
 import tictactoeCover from "../assets/images/tictactoe/cover.png";
 
-
+import trafficCover from "../assets/images/traffic/trafficCover.png"
 
 export const projects: Project[] = [
     {
@@ -601,11 +601,7 @@ export const projects: Project[] = [
 
         cover: trafficCover,
 
-        images: [
-            traffic1,
-            traffic2,
-            traffic3
-        ],
+        images: [],
 
         technologies: [
 
