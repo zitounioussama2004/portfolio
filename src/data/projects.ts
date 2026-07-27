@@ -288,7 +288,7 @@ export const projects: Project[] = [
 
         role: "Full Stack Mobile Developer",
 
-        duration: "2024",
+        duration: "2024 (2 months)",
 
         categories: [
 
@@ -339,13 +339,13 @@ export const projects: Project[] = [
 
         title: "Restaurant Website",
 
-        subtitle: "Restaurant Management Website",
+        subtitle: "Modern Restaurant Management Website",
 
         description:
-            "Modern responsive website for restaurant presentation.",
+            "A responsive restaurant website featuring an interactive menu, shopping cart, reservations, and a modern dining experience.",
 
         longDescription:
-            "Responsive website including menu presentation, reservation and contact page.",
+            "Restaurant Website is a modern and fully responsive web application designed to enhance the digital experience of restaurant customers. The website showcases food menus with categories and filters, allows customers to browse dishes, add meals to a shopping cart, make table reservations, and explore the restaurant through an elegant gallery. The interface focuses on usability, responsive design, and a smooth customer experience across desktop, tablet, and mobile devices.",
 
         cover: restaurantCover,
 
@@ -354,12 +354,12 @@ export const projects: Project[] = [
         technologies: [
 
             {
-                name: "HTML",
+                name: "HTML5",
                 color: "#E34F26"
             },
 
             {
-                name: "CSS",
+                name: "CSS3",
                 color: "#1572B6"
             },
 
@@ -371,22 +371,54 @@ export const projects: Project[] = [
         ],
 
         featured: false,
-        role: "Full Stack Developer",
+
+        role: "Frontend Web Developer",
 
         duration: "2024",
 
         categories: [
-            "Web",
-            "React"
+
+            "Web Development",
+
+            "Restaurant",
+
+            "Responsive Design",
+
+            "Frontend"
+
         ],
 
         features: [
-            "Responsive Design",
-            "Authentication",
-            "Dashboard",
-            "CRUD Operations"
-        ],
 
+            "Responsive User Interface",
+
+            "Interactive Food Menu",
+
+            "Menu Categories",
+
+            "Category Filters",
+
+            "Dish Search",
+
+            "Shopping Cart",
+
+            "Food Details",
+
+            "Special Offers",
+
+            "Online Table Reservation",
+
+            "Restaurant Gallery",
+
+            "Customer Testimonials",
+
+            "Contact Form",
+
+            "Opening Hours",
+
+            "Google Maps Location"
+
+        ],
     },
 
     {
