@@ -582,6 +582,106 @@ export const projects: Project[] = [
 
         ],
 
-    }
+    },
+
+    {
+        id: 7,
+
+        slug: "multi-agent-traffic-simulation",
+
+        title: "Multi-Agent Traffic Simulation",
+
+        subtitle: "Distributed Traffic Management System",
+
+        description:
+            "Distributed traffic simulation using JADE where autonomous vehicles coordinate safely at road intersections.",
+
+        longDescription:
+            "This project is a distributed traffic simulation developed in Java using the JADE (Java Agent DEvelopment Framework). The application simulates multiple autonomous vehicles navigating a road network while communicating through ACL messages. Each vehicle acts as an intelligent software agent capable of making routing decisions, requesting access to intersections and coordinating with other agents without a centralized controller. A Java Swing graphical interface visualizes the map, roads, intersections and vehicle movements in real time. To prevent collisions, the system implements a distributed mutual exclusion algorithm based on logical clocks and message passing, demonstrating concepts from distributed systems, concurrent programming and multi-agent artificial intelligence.",
+
+        cover: trafficCover,
+
+        images: [
+            traffic1,
+            traffic2,
+            traffic3
+        ],
+
+        technologies: [
+
+            {
+                name: "Java",
+                color: "#F89820"
+            },
+
+            {
+                name: "JADE",
+                color: "#009688"
+            },
+
+            {
+                name: "Java Swing",
+                color: "#4CAF50"
+            },
+
+            {
+                name: "ACL Messaging",
+                color: "#9C27B0"
+            },
+
+            {
+                name: "Distributed Systems",
+                color: "#E91E63"
+            },
+
+            {
+                name: "Multi-Agent Systems",
+                color: "#3F51B5"
+            }
+
+        ],
+
+        featured: true,
+
+        role: "Java & Multi-Agent Systems Developer",
+
+        duration: "2025",
+
+        categories: [
+            "Java",
+            "Desktop",
+            "Artificial Intelligence",
+            "Distributed Systems"
+        ],
+
+        features: [
+
+            "Multi-Agent Architecture",
+
+            "Real-Time Vehicle Simulation",
+
+            "Road Network Visualization",
+
+            "Distributed Communication",
+
+            "ACL Message Exchange",
+
+            "Intersection Coordination",
+
+            "Distributed Mutual Exclusion",
+
+            "Logical Clock Synchronization",
+
+            "Collision Avoidance",
+
+            "Dynamic Route Planning",
+
+            "Concurrent Vehicle Execution",
+
+            "Java Swing GUI"
+
+        ]
+
+    },
 
 ]
