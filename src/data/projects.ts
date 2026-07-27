@@ -374,7 +374,7 @@ export const projects: Project[] = [
 
         role: "Frontend Web Developer",
 
-        duration: "2024",
+        duration: "2022",
 
         categories: [
 
@@ -424,17 +424,17 @@ export const projects: Project[] = [
     {
         id: 5,
 
-        slug: "tic-tac-toe",
+        slug: "tic-tac-toe-web",
 
         title: "Tic Tac Toe",
 
-        subtitle: "Game Application",
+        subtitle: "Interactive Web Game",
 
         description:
-            "Classic Tic Tac Toe game.",
+            "A modern and responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.",
 
         longDescription:
-            "Interactive game developed to practice programming logic and user interface design.",
+            "Tic Tac Toe Web is a modern browser-based implementation of the classic game. The application features a clean and responsive interface, smooth animations, score tracking, and multiple game modes. The project was developed to strengthen JavaScript programming skills, DOM manipulation, game logic implementation, and responsive web design.",
 
         cover: tictactoeCover,
 
@@ -443,30 +443,149 @@ export const projects: Project[] = [
         technologies: [
 
             {
-                name: "Java",
-                color: "#F89820"
+                name: "HTML5",
+                color: "#E34F26"
+            },
+
+            {
+                name: "CSS3",
+                color: "#1572B6"
+            },
+
+            {
+                name: "JavaScript",
+                color: "#F7DF1E"
             }
 
         ],
 
         featured: false,
 
-        role: "Full Stack Developer",
+        role: "Frontend Web Developer",
 
-        duration: "3 weeks",
+        duration: "2024",
 
         categories: [
-            "Web",
-            "Java"
+
+            "Web Development",
+
+            "JavaScript",
+
+            "Game Development"
+
         ],
 
         features: [
+
+            "Player vs Player",
+
+            "Player vs Computer",
+
             "Responsive Design",
-            "Authentication",
-            "Dashboard",
-            "CRUD Operations"
+
+            "Game Scoreboard",
+
+            "Winner Detection",
+
+            "Draw Detection",
+
+            "Restart Game",
+
+            "Smooth Animations",
+
+            "Sound Effects",
+
+            "Modern User Interface"
+
+        ],
+    },
+
+    {
+        id: 6,
+
+        slug: "tic-tac-toe-mobile",
+
+        title: "Tic Tac Toe Mobile",
+
+        subtitle: "Modern Flutter Game",
+
+        description:
+            "A modern Tic Tac Toe mobile game featuring multiple game modes, AI opponent, score tracking, and smooth animations.",
+
+        longDescription:
+            "Tic Tac Toe Mobile is a modern Flutter application that reimagines the classic Tic Tac Toe game with an intuitive user interface and engaging gameplay. Players can compete against friends locally or challenge an intelligent AI with different difficulty levels. The application includes score tracking, game history, customizable themes, smooth animations, and responsive layouts optimized for Android devices.",
+
+        cover: tictactoeMobileCover,
+
+        images: [
+            tictactoeMobile1,
+            tictactoeMobile2,
+            tictactoeMobile3
         ],
 
-    },
+        technologies: [
+
+            {
+                name: "Flutter",
+                color: "#02569B"
+            },
+
+            {
+                name: "Dart",
+                color: "#0175C2"
+            },
+
+            {
+                name: "Shared Preferences",
+                color: "#6DB33F"
+            }
+
+        ],
+
+        featured: false,
+
+        role: "Flutter Mobile Developer",
+
+        duration: "2024",
+
+        categories: [
+
+            "Mobile Development",
+
+            "Flutter",
+
+            "Game Development"
+
+        ],
+
+        features: [
+
+            "Player vs Player",
+
+            "Player vs AI",
+
+            "Easy, Medium & Hard Difficulty",
+
+            "Game Scoreboard",
+
+            "Game History",
+
+            "Win / Draw Detection",
+
+            "Restart Match",
+
+            "Responsive Mobile UI",
+
+            "Dark & Light Theme",
+
+            "Sound Effects",
+
+            "Smooth Animations",
+
+            "Local Data Storage"
+
+        ],
+
+    }
 
 ]
