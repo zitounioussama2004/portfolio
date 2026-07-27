@@ -246,15 +246,15 @@ export const projects: Project[] = [
 
         slug: "travel-guide",
 
-        title: "Travel Guide",
+        title: "DZ Travel Guide",
 
-        subtitle: "Tourism Application",
+        subtitle: "Smart Tourism Mobile Application",
 
         description:
-            "Travel guide application for discovering tourist destinations.",
+            "A mobile tourism application for discovering Algeria's best attractions with Google Maps, ratings, reviews, and location-based recommendations.",
 
         longDescription:
-            "Application designed to help users explore tourist attractions, hotels and restaurants.",
+            "DZ Travel Guide is a smart mobile tourism application developed to help users discover Algeria's most beautiful tourist destinations. The application provides an interactive map of all 58 Algerian wilayas, allowing users to explore each region and discover its best attractions, historical sites, hotels, restaurants, beaches, and natural landscapes. Users can register, authenticate, rate tourist places, write reviews, save favorite destinations, and navigate directly to locations using Google Maps. The backend was developed with PHP and MySQL while the mobile application was built using Flutter.",
 
         cover: travelCover,
 
@@ -265,25 +265,69 @@ export const projects: Project[] = [
             {
                 name: "Flutter",
                 color: "#02569B"
+            },
+
+            {
+                name: "PHP",
+                color: "#777BB4"
+            },
+
+            {
+                name: "MySQL",
+                color: "#4479A1"
+            },
+
+            {
+                name: "Google Maps",
+                color: "#34A853"
             }
 
         ],
 
         featured: false,
-        role: "Full Stack Developer",
+
+        role: "Full Stack Mobile Developer",
 
         duration: "2024",
 
         categories: [
-            "Web",
-            "React"
+
+            "Mobile Development",
+
+            "Tourism",
+
+            "Google Maps",
+
+            "Full Stack"
+
         ],
 
         features: [
-            "Responsive Design",
-            "Authentication",
-            "Dashboard",
-            "CRUD Operations"
+
+            "Authentication & Registration",
+
+            "58 Algerian Wilayas Explorer",
+
+            "Interactive Google Maps",
+
+            "Tourist Attractions",
+
+            "Hotels & Restaurants",
+
+            "Location Details",
+
+            "User Ratings",
+
+            "Reviews & Comments",
+
+            "Favorites",
+
+            "Search & Filtering",
+
+            "Responsive Mobile UI",
+
+            "Location Navigation"
+
         ],
 
     },
